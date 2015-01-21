@@ -17,18 +17,22 @@ Simple, [Bootstrap](http://getbootstrap.com/) based HTTP Error Page Generator. C
 
 ## Integration ##
 
-## Lighttpd ##
+### Lighttpd ###
 [Lighttpd](http://www.lighttpd.net/) supports custom error-pages using the [server.errorfile-prefix](http://redmine.lighttpd.net/projects/lighttpd/wiki/Server_errorfile-prefixDetails) directive.
+
 File: `lighttpd.conf`
+
 Example - assumes HttpErrorPages are located into `/var/www/ErrorPages/`.
 
 ```ApacheConf
 server.errorfile-prefix = "/var/www/ErrorPages/HTTP"
 ```
 
-## Apache Httpd##
+### Apache Httpd ###
 [Apache Httpd 2.x](http://httpd.apache.org/) supports custom error-pages using multiple [ErrorDocument](http://httpd.apache.org/docs/2.4/mod/core.html#errordocument) directives.
+
 File: `httpd.conf` or `.htaccess`
+
 Example - assumes HttpErrorPages are located into your **document root** `/var/www/...docroot../ErrorPages`.
 
 ```ApacheConf
@@ -42,9 +46,11 @@ ErrorDocument 502 /ErrorPages/HTTP502.html
 ErrorDocument 503 /ErrorPages/HTTP503.html
 ```
 
-## NGINX ##
+### NGINX ###
 [NGINX](http://nginx.org/) supports custom error-pages using multiple [error_page](http://nginx.org/en/docs/http/ngx_http_core_module.html#error_page) directives.
+
 File: `httpd.conf` or `.htaccess`
+
 Example - assumes HttpErrorPages are located into `/var/www/ErrorPages/`.
 
 ```ApacheConf
