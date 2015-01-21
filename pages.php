@@ -55,6 +55,12 @@ return array (
 		'521' => array (
 				'title' => 'Webservice currently unavailable',
 				'message' => "We've got some trouble with our backend upstream cluster.\nOur service team has been dispatched to bring it back online."
+		),
+		
+		// maintenance
+		'533' => array(
+				'title' => 'Scheduled Maintenance',
+				'message' => "This site is currently down for maintenance.\nOur service team is working hard to bring it back online soon."				
 		)
 )
 ;
