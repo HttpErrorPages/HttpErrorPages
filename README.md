@@ -1,7 +1,7 @@
 # Simple HttpErrorPages #
 Simple HTTP Error Page Generator. Create a bunch of custom error pages - suitable to use with [Lighttpd](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs_ConfigurationOptions), Nginx, Apache or Tomcat.
 
-![Screenshot](http://httperrorpages.andidittrich.de/screenshot1.png)
+![Screenshot](https://raw.githubusercontent.com/AndiDittrich/HttpErrorPages/master/assets/screenshot1.png)
 
 ## Demo ##
 * [HTTP400](http://httperrorpages.andidittrich.de/HTTP400.html)
