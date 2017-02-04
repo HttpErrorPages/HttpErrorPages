@@ -4,16 +4,16 @@ Simple HTTP Error Page Generator. Create a bunch of custom error pages - suitabl
 ![Screenshot](https://raw.githubusercontent.com/AndiDittrich/HttpErrorPages/master/assets/screenshot1.png)
 
 ## Demo ##
-* [HTTP400](http://httperrorpages.andidittrich.de/HTTP400.html)
-* [HTTP401](http://httperrorpages.andidittrich.de/HTTP401.html)
-* [HTTP403](http://httperrorpages.andidittrich.de/HTTP403.html)
-* [HTTP404](http://httperrorpages.andidittrich.de/HTTP404.html)
-* [HTTP500](http://httperrorpages.andidittrich.de/HTTP500.html)
-* [HTTP501](http://httperrorpages.andidittrich.de/HTTP501.html)
-* [HTTP502](http://httperrorpages.andidittrich.de/HTTP502.html)
-* [HTTP503](http://httperrorpages.andidittrich.de/HTTP503.html)
-* [HTTP520](http://httperrorpages.andidittrich.de/HTTP520.html)
-* [HTTP521](http://httperrorpages.andidittrich.de/HTTP521.html)
+* [HTTP400](https://andidittrich.github.io/HttpErrorPages/HTTP400.html)
+* [HTTP401](https://andidittrich.github.io/HttpErrorPages/HTTP401.html)
+* [HTTP403](https://andidittrich.github.io/HttpErrorPages/HTTP403.html)
+* [HTTP404](https://andidittrich.github.io/HttpErrorPages/HTTP404.html)
+* [HTTP500](https://andidittrich.github.io/HttpErrorPages/HTTP500.html)
+* [HTTP501](https://andidittrich.github.io/HttpErrorPages/HTTP501.html)
+* [HTTP502](https://andidittrich.github.io/HttpErrorPages/HTTP502.html)
+* [HTTP503](https://andidittrich.github.io/HttpErrorPages/HTTP503.html)
+* [HTTP520](https://andidittrich.github.io/HttpErrorPages/HTTP520.html)
+* [HTTP521](https://andidittrich.github.io/HttpErrorPages/HTTP521.html)
 
 ## Integration ##
 
