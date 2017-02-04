@@ -1,4 +1,7 @@
 .settings*
 .project
+.idea
+.buildpath
+.git
 gfx/*
 PublicHtml/*
