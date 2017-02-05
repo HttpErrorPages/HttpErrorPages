@@ -3,9 +3,23 @@
  * HttpErrorPages HTML Generator
  */
 
-$config = array(
-    'footer' => 'Technical Contact: <a href="mailto:x@example.com">x@example.com</a>'
-);
+// default config file
+$configFilename = 'config.ini';
+
+// config file specified ?
+if (isset($argv[1])){
+    if (is_file($argv[1])){
+        echo 'Using Config File "', $argv[1], '"', PHP_EOL;
+        $configFilename = $argv[1];
+    }else{
+        echo 'Error: Config File "', $argv[1], '" not found - Using default one', PHP_EOL;
+    }
+}else{
+    echo 'Using Default Config File "', $configFilename, '"', PHP_EOL;
+}
+
+// load config
+$config = parse_ini_file($configFilename, false);
 
 // load pages
 $pages = require('pages.php');
@@ -15,10 +29,13 @@ $css = trim(file_get_contents('assets/Layout.css'));
 
 // generate each error page
 foreach ($pages as $code => $page){
+    echo 'Generating Page ', $page['title'], ' (', $code, ')..', PHP_EOL;
+
     // assign variables
     $v_code = intval($code);
     $v_title = nl2br(htmlspecialchars($page['title']));
     $v_message = nl2br(htmlspecialchars($page['message']));
+    $v_footer = (isset($config['footer']) ? $config['footer'] : '');
 
     // render template
     ob_start();
@@ -26,5 +43,9 @@ foreach ($pages as $code => $page){
     $errorpage = ob_get_clean();
 
     // store template
-    file_put_contents('dist/HTTP'.$v_code.'.html', $errorpage);
+    if (is_dir($config['output_dir'])){
+        file_put_contents($config['output_dir'] . 'HTTP'.$v_code.'.html', $errorpage);
+    }else{
+        echo 'Error: Output dir "', $config['output_dir'], '" not found', PHP_EOL;
+    }    
 }
