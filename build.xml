@@ -20,6 +20,10 @@
         <exec executable="php">
             <arg value="generator.php" />
         </exec>
+
+        <!-- create package !-->
+        <zip destfile="dist/pages.zip" basedir="dist" includes="*.html" />
+        <tar destfile="dist/pages.tar" basedir="dist" includes="*.html" />
     </target>
 
     <!-- Generate Docs Pages !-->

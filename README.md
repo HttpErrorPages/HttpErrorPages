@@ -15,6 +15,17 @@ Simple HTTP Error Page Generator. Create a bunch of custom error pages - suitabl
 * [HTTP520](https://andidittrich.github.io/HttpErrorPages/HTTP520.html)
 * [HTTP521](https://andidittrich.github.io/HttpErrorPages/HTTP521.html)
 
+## Download ##
+Just clone/download the git repository **or** use the prebuild packages (only the generated html files are included)
+
+```shell
+# TAR Archive
+wget https://raw.githubusercontent.com/AndiDittrich/HttpErrorPages/master/dist/pages.tar
+
+# ZIP Archive
+wget https://raw.githubusercontent.com/AndiDittrich/HttpErrorPages/master/dist/pages.zip
+```
+
 ## Integration ##
 
 ### Lighttpd ###
