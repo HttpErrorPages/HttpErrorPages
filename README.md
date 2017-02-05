@@ -19,8 +19,8 @@ Simple HTTP Error Page Generator. Create a bunch of custom error pages - suitabl
 Just clone/download the git repository **or** use the prebuild packages (only the generated html files are included)
 
 **Direct Download**
-* [dist/pages.tar](Download TAR Archive)
-* [dist/pages.zip](Download ZIP Archive)
+* [Download TAR Archive](https://raw.githubusercontent.com/AndiDittrich/HttpErrorPages/master/dist/pages.tar)
+* [Download ZIP Archive](https://raw.githubusercontent.com/AndiDittrich/HttpErrorPages/master/dist/pages.zip)
 
 **Shell/Bash**
 ```shell
