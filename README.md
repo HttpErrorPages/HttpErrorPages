@@ -18,6 +18,11 @@ Simple HTTP Error Page Generator. Create a bunch of custom error pages - suitabl
 ## Download ##
 Just clone/download the git repository **or** use the prebuild packages (only the generated html files are included)
 
+**Direct Download**
+* [dist/pages.tar](Download TAR Archive)
+* [dist/pages.zip](Download ZIP Archive)
+
+**Shell/Bash**
 ```shell
 # TAR Archive
 wget https://raw.githubusercontent.com/AndiDittrich/HttpErrorPages/master/dist/pages.tar
