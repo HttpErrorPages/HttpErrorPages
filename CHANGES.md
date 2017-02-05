@@ -1,6 +1,7 @@
 ## 0.4 ##
 * Added: **ANT** based build file
 * Added: Configuration file `config.ini`
+* Added: Prebuild Packages (includes all generated html file)
 * Changed the directory structure
 * Demo Pages are hosted via GitHub Pages (located within the `docs/` dir)
 
