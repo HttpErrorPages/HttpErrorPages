@@ -73,27 +73,47 @@ Error-Codes used by CloudFlare
 ```php
 // webserver origin error
 '520' => array(
-	'title' => 'Origin Error - Unknown Host',
-	'message' => 'The requested hostname is not routed. Use only hostnames to access resources.'
+    'title' => 'Origin Error - Unknown Host',
+    'message' => 'The requested hostname is not routed. Use only hostnames to access resources.'
 ),
-		
+
 // webserver down error
 '521' => array (
-		'title' => 'Webservice currently unavailable',
-		'message' => "We've got some trouble with our backend upstream cluster.\nOur service team has been dispatched to bring it back online."
-)	
+    'title' => 'Webservice currently unavailable',
+    'message' => "We've got some trouble with our backend upstream cluster.\nOur service team has been dispatched to bring it back online."
+)
 ```
 
 ### Build/Generator ###
-Used Naming-Scheme: **HTTP**__CODE__**.html** (customizable by editing the generator script)
+Used Naming-Scheme: **HTTP**__CODE__**.html** (customizable by editing the `config.ini`)
 To generate the static html pages, run the `generator.php` script:
 
 ```shell
 php generator.php
 ```
 
-All generated html files are located into the `Build/` directory.
+All generated html files are located into the `dist/` directory.
 
+### Configuration ###
+
+It's possible to change the basic configuration without modifying the generator script. Just change the following variables within the `config.ini`.
+
+You can also specify a custom configuration file by passing it as first argument to the generator script `php generator.php path/myconfig.ini`
+
+**config.ini**
+
+```ini
+[global]
+
+; Output Filename Scheme - eg. HTTP500.html
+scheme='HTTP%d.html'
+
+; Output dir path
+output_dir="docs/"
+
+; Footer content (HTML Allowed)
+footer = "Technical Contact: <a href="mailto:x@example.com">x@example.com</a>"
+```
 
 ## License ##
 HttpErrorsPages is OpenSource and licensed under the Terms of [The MIT License (X11)](http://opensource.org/licenses/MIT) - your're welcome to contribute

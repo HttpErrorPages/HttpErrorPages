@@ -42,10 +42,13 @@ foreach ($pages as $code => $page){
     require('template.phtml');
     $errorpage = ob_get_clean();
 
+    // generate output filename
+    $filename = sprintf($config['scheme'], $v_code);
+
     // store template
     if (is_dir($config['output_dir'])){
-        file_put_contents($config['output_dir'] . 'HTTP'.$v_code.'.html', $errorpage);
+        file_put_contents($config['output_dir'] . $filename, $errorpage);
     }else{
         echo 'Error: Output dir "', $config['output_dir'], '" not found', PHP_EOL;
-    }    
+    }
 }
