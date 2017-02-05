@@ -85,7 +85,7 @@ Error-Codes used by CloudFlare
 ```
 
 ### Build/Generator ###
-Used Naming-Scheme: **HTTP<CODE>.html** (customizable by editing the `config.ini`)
+Used Naming-Scheme: `HTTP#CODE#.html` (customizable by editing the `config.ini`)
 To generate the static html pages, run the `generator.php` script:
 
 ```shell
