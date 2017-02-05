@@ -62,20 +62,26 @@ ErrorDocument 502 /ErrorPages/HTTP502.html
 ErrorDocument 503 /ErrorPages/HTTP503.html
 ```
 
-### NGINX ###
-[NGINX](http://nginx.org/) supports custom error-pages using multiple [error_page](http://nginx.org/en/docs/http/ngx_http_core_module.html#error_page) directives.
-
-File: `httpd.conf` or `.htaccess`
+File: `default.conf`
 
 Example - assumes HttpErrorPages are located into `/var/www/ErrorPages/`.
 
-```ApacheConf
-error_page 400 401 402 403 404 /error/HTTP40x.html;
-error_page 500 501 502 503 /error/HTTP50x.html;
+```nginx
+# add one directive for each http status code
+error_page 400 /ErrorPages/HTTP400.html;
+error_page 401 /ErrorPages/HTTP401.html;
+error_page 402 /ErrorPages/HTTP402.html;
+error_page 403 /ErrorPages/HTTP403.html;
+error_page 404 /ErrorPages/HTTP404.html;
+error_page 500 /ErrorPages/HTTP500.html;
+error_page 501 /ErrorPages/HTTP501.html;
+error_page 502 /ErrorPages/HTTP502.html;
+error_page 503 /ErrorPages/HTTP503.html;
 
-location ^~ /error/ {
-	internal;
-	root /var/www/ErrorPages;
+# redirect the virtual ErrorPages path the real path
+location /ErrorPages/ {
+    alias /var/www/ErrorPages/;
+    internal;
 }
 ```
 

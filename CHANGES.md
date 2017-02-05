@@ -1,3 +1,7 @@
+## 0.4.1 ##
+* Bugfix: Restored NGINX Configuration from 0331dac487caa0b3ddb5897b5d35afc2c01dfbd5
+* Added: Semantic Versioning
+
 ## 0.4 ##
 * Added: **ANT** based build file
 * Added: Configuration file `config.ini`
