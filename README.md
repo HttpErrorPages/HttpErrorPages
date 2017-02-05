@@ -85,14 +85,22 @@ Error-Codes used by CloudFlare
 ```
 
 ### Build/Generator ###
-Used Naming-Scheme: **HTTP**__CODE__**.html** (customizable by editing the `config.ini`)
+Used Naming-Scheme: **HTTP<CODE>.html** (customizable by editing the `config.ini`)
 To generate the static html pages, run the `generator.php` script:
 
 ```shell
 php generator.php
 ```
 
-All generated html files are located into the `dist/` directory.
+All generated html files are located into the `dist/` directory by default.
+
+### Compile LESS Files ###
+To rebuild the LESS files run the **ANT** build script (requires lessc in your path):
+
+```shell
+ant css
+```
+
 
 ### Configuration ###
 
