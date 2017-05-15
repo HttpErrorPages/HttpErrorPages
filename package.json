@@ -1,0 +1,33 @@
+{
+  "name": "http-error-pages",
+  "version": "0.1.0",
+  "description": "Simple HTTP Error Pages for expressjs",
+  "keywords": [
+    "http",
+    "https",
+    "error",
+    "errorpage",
+    "express",
+    "expressjs",
+    "router",
+    "handler"
+  ],
+  "files": [
+    "bin",
+    "dist",
+    "express-demo.js",
+    "CHANGED.md",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "bin": {},
+  "main": "./lib/router.js",
+  "author": "Andi Dittrich (https://andidittrich.de)",
+  "homepage": "https://github.com/AndiDittrich/HttpErrorPages",
+  "bugs": "https://github.com/AndiDittrich/HttpErrorPages/issues",
+  "repository": "AndiDittrich/HttpErrorPages",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.15.2"
+  }
+}
