@@ -1,6 +1,6 @@
 {
   "name": "http-error-pages",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Simple HTTP Error Pages for expressjs",
   "keywords": [
     "http",
@@ -21,7 +21,7 @@
     "README.md"
   ],
   "bin": {},
-  "main": "./lib/router.js",
+  "main": "./lib/error-handler.js",
   "author": "Andi Dittrich (https://andidittrich.de)",
   "homepage": "https://github.com/AndiDittrich/HttpErrorPages",
   "bugs": "https://github.com/AndiDittrich/HttpErrorPages/issues",

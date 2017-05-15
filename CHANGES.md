@@ -1,3 +1,6 @@
+## 0.5.2 ##
+* Bugfix: package.json contains invalid main/app entry file
+
 ## 0.5.1 ##
 * Bugfix: `lib/` directory was not included in the npm package
 
