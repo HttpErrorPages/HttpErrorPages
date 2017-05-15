@@ -4,4 +4,5 @@
 .buildpath
 .git
 gfx/*
+node_modules*
 PublicHtml/*

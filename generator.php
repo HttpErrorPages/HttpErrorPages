@@ -30,12 +30,19 @@ file_put_contents('dist/pages.json', json_encode($pages));
 // load inline css
 $css = trim(file_get_contents('assets/Layout.css'));
 
+// js template page
+$pages['{{code}}'] = array(
+    'title' => '{{title}}',
+    'message' => '{{message}}',
+    'footer' => '{{footer}}'
+);
+
 // generate each error page
 foreach ($pages as $code => $page){
     echo 'Generating Page ', $page['title'], ' (', $code, ')..', PHP_EOL;
 
     // assign variables
-    $v_code = intval($code);
+    $v_code = $code;
     $v_title = nl2br(htmlspecialchars($page['title']));
     $v_message = nl2br(htmlspecialchars($page['message']));
     $v_footer = (isset($config['footer']) ? $config['footer'] : '');
