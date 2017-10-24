@@ -48,16 +48,20 @@ server {
     root        /var/www;
     index       index.html;
     
-    # add one directive for each http status code
-    error_page 400 /ErrorPages/HTTP400.html;
-    error_page 401 /ErrorPages/HTTP401.html;
-    error_page 402 /ErrorPages/HTTP402.html;
-    error_page 403 /ErrorPages/HTTP403.html;
-    error_page 404 /ErrorPages/HTTP404.html;
-    error_page 500 /ErrorPages/HTTP500.html;
-    error_page 501 /ErrorPages/HTTP501.html;
-    error_page 502 /ErrorPages/HTTP502.html;
-    error_page 503 /ErrorPages/HTTP503.html;
+    location / {
+        try_files $uri $uri/ =404;
+        
+        # add one directive for each http status code
+        error_page 400 /ErrorPages/HTTP400.html;
+        error_page 401 /ErrorPages/HTTP401.html;
+        error_page 402 /ErrorPages/HTTP402.html;
+        error_page 403 /ErrorPages/HTTP403.html;
+        error_page 404 /ErrorPages/HTTP404.html;
+        error_page 500 /ErrorPages/HTTP500.html;
+        error_page 501 /ErrorPages/HTTP501.html;
+        error_page 502 /ErrorPages/HTTP502.html;
+        error_page 503 /ErrorPages/HTTP503.html;
+    }
 
     # redirect the virtual ErrorPages path the real path
     location /ErrorPages/ {
