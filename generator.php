@@ -21,8 +21,25 @@ if (isset($argv[1])){
 // load config
 $config = parse_ini_file($configFilename, false);
 
-// load pages
-$pages = require('pages.php');
+//default language
+$language = 'en_US'; 
+
+if (isset($argv[2])) {
+    $language = $argv[2];
+}
+
+//Internationalization
+switch($language) {
+    case 'pt_BR':
+        $pages = require('pages-pt_BR.php');
+        break;
+    case 'en_US':
+        $pages = require('pages-en_US.php');
+        break;
+    default:
+        $pages = require('pages-en_US.php');
+        break;      
+}
 
 // store pages as json data
 file_put_contents('dist/pages.json', json_encode($pages));

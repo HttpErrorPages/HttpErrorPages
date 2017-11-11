@@ -37,27 +37,37 @@ wget https://raw.githubusercontent.com/AndiDittrich/HttpErrorPages/master/dist/p
 
 [NGINX](http://nginx.org/en/docs/http/ngx_http_core_module.html#error_page) supports custom error-pages using multiple `error_page` directives.
 
-File: `default.conf`
+File: [`default.conf`](https://www.nginx.com/resources/wiki/start/topics/examples/full/)
 
-Example - assumes HttpErrorPages are located into `/var/www/ErrorPages/`.
+Example - assumes HttpErrorPages are located into `/var/ErrorPages/`.
 
 ```nginx
-# add one directive for each http status code
-error_page 400 /ErrorPages/HTTP400.html;
-error_page 401 /ErrorPages/HTTP401.html;
-error_page 402 /ErrorPages/HTTP402.html;
-error_page 403 /ErrorPages/HTTP403.html;
-error_page 404 /ErrorPages/HTTP404.html;
-error_page 500 /ErrorPages/HTTP500.html;
-error_page 501 /ErrorPages/HTTP501.html;
-error_page 502 /ErrorPages/HTTP502.html;
-error_page 503 /ErrorPages/HTTP503.html;
+server {
+    listen      80;
+    server_name localhost;
+    root        /var/www;
+    index       index.html;
+    
+    location / {
+        try_files $uri $uri/ =404;
+        
+        # add one directive for each http status code
+        error_page 400 /ErrorPages/HTTP400.html;
+        error_page 401 /ErrorPages/HTTP401.html;
+        error_page 402 /ErrorPages/HTTP402.html;
+        error_page 403 /ErrorPages/HTTP403.html;
+        error_page 404 /ErrorPages/HTTP404.html;
+        error_page 500 /ErrorPages/HTTP500.html;
+        error_page 501 /ErrorPages/HTTP501.html;
+        error_page 502 /ErrorPages/HTTP502.html;
+        error_page 503 /ErrorPages/HTTP503.html;
+    }
 
-# redirect the virtual ErrorPages path the real path
-location /ErrorPages/ {
-    alias /var/www/ErrorPages/;
-    internal;
-}
+    # redirect the virtual ErrorPages path the real path
+    location /ErrorPages/ {
+        alias /var/ErrorPages/;
+        internal;
+    }
 ```
 
 ## expressjs Integration ##
@@ -147,22 +157,33 @@ Custom Error-Codes used by e.g. CloudFlare
 ```
 
 ### Build/Generator ###
+* Install packages using npm or yarn and have php in your executable path* 
 Used Naming-Scheme: `HTTP#CODE#.html` (customizable by editing the `config.ini`)
 To generate the static html pages, run the `generator.php` script:
 
 ```shell
-php generator.php
+npm run generate-php
 ```
 
 All generated html files are located into the `dist/` directory by default.
 
 ### Compile LESS Files ###
-To rebuild the LESS files run the **ANT** build script (requires lessc in your path):
+To rebuild the LESS files run the :
 
 ```shell
-ant css
+npm run generate-css
 ```
 
+### Build all ###
+
+```shell
+npm run generate
+```
+
+
+### Less CSS ### 
+
+Modify the `assets/Layout.less` to make your own design styles (Make sure to run build scripts after editing the files)
 
 ### Configuration ###
 
