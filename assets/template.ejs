@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Simple HttpErrorPages | MIT License | https://github.com/AndiDittrich/HttpErrorPages -->
+    <meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>We've got some trouble | <%= code %> - <%= title %></title>
+    <style type="text/css"><%- inlinecss %></style>
+</head>
+<body>
+    <div class="cover"><h1><%= title %> <small>Error <%= code %></small></h1><p class="lead"><%= message %></p></div>
+    <% if (footer){ %><footer><p><%- footer %></p></footer><% } %>
+</body>
+</html>

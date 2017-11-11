@@ -1,41 +1,57 @@
 {
-  "name": "http-error-pages",
-  "version": "0.5.2",
-  "description": "Simple HTTP Error Pages for expressjs",
-  "scripts":{
-    "generate-css":"lessc assets/Layout.less assets/Layout.css",
-    "generate-html":"php generator.php",
-    "generate": "npm run generate-css && npm run generate-html"
-  },
-  "keywords": [
-    "http",
-    "https",
-    "error",
-    "errorpage",
-    "express",
-    "expressjs",
-    "router",
-    "handler"
-  ],
-  "files": [
-    "lib",
-    "dist",
-    "express-demo.js",
-    "CHANGED.md",
-    "LICENSE.md",
-    "README.md"
-  ],
-  "bin": {},
-  "main": "./lib/error-handler.js",
-  "author": "Andi Dittrich (https://andidittrich.de)",
-  "homepage": "https://github.com/AndiDittrich/HttpErrorPages",
-  "bugs": "https://github.com/AndiDittrich/HttpErrorPages/issues",
-  "repository": "AndiDittrich/HttpErrorPages",
-  "license": "MIT",
-  "devDependencies": {
-    "express": "^4.15.2"
-  },
-  "dependencies": {
-    "less": "^2.7.3"
-  }
+    "name": "http-error-pages",
+    "version": "0.6.0",
+    "description": "Simple HTTP Error Pages for expressjs",
+    "engines": {
+        "node": ">=7.6"
+    },
+    "scripts": {
+        "docs": "node bin/generator.js static docs/config.json --out=docs",
+        "generate": "node bin/generator.js static",
+        "gulp": "gulp"
+    },
+    "keywords": [
+        "http",
+        "https",
+        "error",
+        "errorpage",
+        "express",
+        "expressjs",
+        "router",
+        "handler"
+    ],
+    "files": [
+        "lib",
+        "dist",
+        "i18n",
+        "express-demo.js",
+        "CHANGES.md",
+        "LICENSE.md",
+        "README.md"
+    ],
+    "bin": {
+        "http-error-pages": "./bin/generator.js"
+    },
+    "main": "./lib/error-handler.js",
+    "author": "Andi Dittrich (https://andidittrich.de)",
+    "homepage": "https://github.com/AndiDittrich/HttpErrorPages",
+    "bugs": "https://github.com/AndiDittrich/HttpErrorPages/issues",
+    "repository": "AndiDittrich/HttpErrorPages",
+    "license": "MIT",
+    "devDependencies": {
+        "commander": "^2.11.0",
+        "eslint": "^4.11.0",
+        "eslint-config-aenondynamics": "^0.2.0",
+        "express": "^4.15.2",
+        "fs-magic": "^2.1.1",
+        "gulp": "^3.9.1",
+        "gulp-clean-css": "^3.9.0",
+        "gulp-concat-util": "^0.5.5",
+        "gulp-prettyerror": "^1.2.1",
+        "gulp-sass": "^3.1.0",
+        "less": "^2.7.3"
+    },
+    "dependencies": {
+        "ejs": "^2.5.7"
+    }
 }
