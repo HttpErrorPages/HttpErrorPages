@@ -7,8 +7,9 @@
     },
     "scripts": {
         "docs": "node bin/generator.js static docs/config.json --out=docs",
-        "generate": "node bin/generator.js static",
-        "gulp": "gulp"
+        "static": "node bin/generator.js static",
+        "gulp": "gulp",
+        "archives": "tar -cf dist/pages.tar dist/*.html"
     },
     "keywords": [
         "http",
