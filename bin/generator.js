@@ -88,7 +88,7 @@ _cli
 .command('static [config]')
     .description('run http-error-pages generator')
     .option('-t, --template <path>', 'path to your custom EJS template file', null)
-    .option('-s, --styles <path>', 'path to your custom stylesheet', null)
+    .option('-s, --styles <path>', 'path to your custom stylesheet (precompiled as CSS!)', null)
     .option('-p, --pages <path>', 'path to your custom page definition', null)
     .option('-l, --lang <lang>', 'the language of the default page definition', null)
     .option('-o, --out <path>', 'output directory', null)
