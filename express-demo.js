@@ -1,22 +1,43 @@
-var _express = require('express');
-var _webapp = _express();
-var _httpErrorPages = require('./lib/error-handler');
+const _express = require('express');
+const _webapp = _express();
 
-// demo handler
-_webapp.get('/', function(req, res){
-    res.type('.txt').send('HttpErrorPages Demo');
-});
+// use require('http-error-pages') for regular apps!
+const _httpErrorPages = require('./lib/error-handler');
 
-// throw an 403 error
-_webapp.get('/my403error', function(req, res, next){
-    var myError = new Error();
-    myError.status = 403;
-    next(myError);
-});
+async function bootstrap(){
+    // demo handler
+    _webapp.get('/', function(req, res){
+        res.type('.txt').send('HttpErrorPages Demo');
+    });
 
-// use http error pages handler (final statement!)
-_httpErrorPages(_webapp);
+    // throw an 403 error
+    _webapp.get('/my403error', function(req, res, next){
+        const myError = new Error();
+        myError.status = 403;
+        next(myError);
+    });
 
-// start service
-_webapp.listen(8888);
-console.log('Running Demo on Port 8888');
+    // throw an internal error
+    _webapp.get('/500', function(req, res){
+        throw new Error('Server Error');
+    });
+
+    // use http error pages handler (final statement!)
+    // because of the asynchronous file-loaders, wait until it has been executed
+    await _httpErrorPages(_webapp, {
+        lang: 'en_US',
+        footer: 'Hello <strong>World</strong>'
+    });
+
+    // start service
+    _webapp.listen(8888);
+}
+
+// invoke bootstrap operation
+bootstrap()
+    .then(function(){
+        console.log('Running Demo on Port 8888');
+    })
+    .catch(function(e){
+        console.error(e);
+    });
