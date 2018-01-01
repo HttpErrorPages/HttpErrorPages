@@ -1,6 +1,6 @@
 {
   "name": "http-error-pages",
-  "version": "0.5.1",
+  "version": "0.5.0",
   "description": "Simple HTTP Error Pages for expressjs",
   "keywords": [
     "http",
@@ -13,7 +13,7 @@
     "handler"
   ],
   "files": [
-    "lib",
+    "bin",
     "dist",
     "express-demo.js",
     "CHANGED.md",
