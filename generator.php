@@ -24,9 +24,6 @@ $config = parse_ini_file($configFilename, false);
 // load pages
 $pages = require('pages.php');
 
-// store pages as json data
-file_put_contents('dist/pages.json', json_encode($pages));
-
 // load inline css
 $css = trim(file_get_contents('assets/Layout.css'));
 
