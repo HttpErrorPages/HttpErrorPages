@@ -214,39 +214,6 @@ Generating static pages
 Static files generated
 ```
 
-### Multi language (i18n) ###
-
-To use a different language just provide a custom [page definition](i18n/) - in case the file is located in `i18n` you can use the `--lang option`
-
-**Example**
-```terminal
-$ npm run static -- --lang pt_BR
-
-> http-error-pages@0.6.0 static HttpErrorPages
-> node bin/generator.js static "--lang" "pt_BR"
-
-Paths
- |- Config: HttpErrorPages/config.json
- |- Template: HttpErrorPages/assets/template.ejs
- |- Styles: HttpErrorPages/assets/layout.css
- |- Pages: HttpErrorPages/i18n/pages-pt_BR.json
-
-Generating static pages
- |- Page <HTTP404.html>
- |- Page <HTTP400.html>
- |- Page <HTTP401.html>
- |- Page <HTTP403.html>
- |- Page <HTTP500.html>
- |- Page <HTTP501.html>
- |- Page <HTTP502.html>
- |- Page <HTTP520.html>
- |- Page <HTTP503.html>
- |- Page <HTTP521.html>
- |- Page <HTTP533.html>
-Static files generated
-
-```
-
 ### Add custom pages ###
 
 Create custom error codes/pages used by e.g. CloudFlare
