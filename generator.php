@@ -24,12 +24,12 @@ $config = parse_ini_file($configFilename, false);
 //default language
 $language = 'en_US'; 
 
-if (isset($argv[2])) {
-    $language = $argv[2];
+if (isset($_GET['language'])) {
+    $language = $_GET['language'];
 }
 
 //Internationalization
-switch($language) {
+switch($_GET['language']) {
     case 'pt_BR':
         $pages = require('pages-pt_BR.php');
         break;
