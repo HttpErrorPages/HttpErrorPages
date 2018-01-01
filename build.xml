@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="HttpErrorPages" default="pages" basedir=".">
+    <!-- AN-contrib !-->
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+
+    <target name="css">
+        <!-- Less CSS build (WEB CSS) !-->
+        <echo message="Building LESS Files.." />
+        <exec executable="lessc">
+            <arg line="assets/Layout.less" />
+            <arg line="assets/Layout.css" />
+            <arg line="--clean-css" />
+        </exec>
+    </target>
+
+    <!-- Generate Pages using default config !-->
+    <target name="pages" depends="css">
+        <!-- Generate Pages !-->
+        <exec executable="php">
+            <arg value="generator.php" />
+        </exec>
+
+        <!-- create package !-->
+        <zip destfile="dist/pages.zip" basedir="dist" includes="*.html" />
+        <tar destfile="dist/pages.tar" basedir="dist" includes="*.html" />
+    </target>
+
+    <!-- Generate Docs Pages !-->
+    <target name="docs" depends="css">
+        <!-- Generate Pages !-->
+        <exec executable="php">
+            <arg value="generator.php" />
+            <arg value="docs/config.ini" />
+        </exec>
+    </target>
+
+    <!-- Full Rebuild !-->
+    <target name="full" depends="css,docs,pages">
+    </target>
+
+</project>
+
