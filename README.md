@@ -157,33 +157,22 @@ Custom Error-Codes used by e.g. CloudFlare
 ```
 
 ### Build/Generator ###
-* Install packages using npm or yarn and have php in your executable path* 
 Used Naming-Scheme: `HTTP#CODE#.html` (customizable by editing the `config.ini`)
 To generate the static html pages, run the `generator.php` script:
 
 ```shell
-npm run generate-php
+php generator.php
 ```
 
 All generated html files are located into the `dist/` directory by default.
 
 ### Compile LESS Files ###
-To rebuild the LESS files run the :
+To rebuild the LESS files run the **ANT** build script (requires lessc in your path):
 
 ```shell
-npm run generate-css
+ant css
 ```
 
-### Build all ###
-
-```shell
-npm run generate
-```
-
-
-### Less CSS ### 
-
-Modify the `assets/Layout.less` to make your own design styles (Make sure to run build scripts after editing the files)
 
 ### Configuration ###
 

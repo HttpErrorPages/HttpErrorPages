@@ -2,11 +2,6 @@
   "name": "http-error-pages",
   "version": "0.5.2",
   "description": "Simple HTTP Error Pages for expressjs",
-  "scripts":{
-    "generate-css":"lessc assets/Layout.less assets/Layout.css",
-    "generate-html":"php generator.php",
-    "generate": "npm run generate-css && npm run generate-html"
-  },
   "keywords": [
     "http",
     "https",
@@ -34,8 +29,5 @@
   "license": "MIT",
   "devDependencies": {
     "express": "^4.15.2"
-  },
-  "dependencies": {
-    "less": "^2.7.3"
   }
 }
