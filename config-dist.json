@@ -1,7 +1,0 @@
-{
-    //  Output Filename Scheme - eg. HTTP500.html
-    "scheme": "HTTP%d.html",
-
-    // Footer content (HTML Allowed)
-    "footer": null
-}
