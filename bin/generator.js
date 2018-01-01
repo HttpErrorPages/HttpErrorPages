@@ -1,30 +1,57 @@
 #!/usr/bin/env node
 
 const _fs = require('fs-magic');
+const _ejs = require('ejs');
 const _path = require('path');
 const _assetsPath = _path.join(__dirname, '../assets');
 const _langPath = _path.join(__dirname, '../i18n');
 const _cli = require('commander');
 const _pkg = require('../package.json');
-const _pageRenderer = require('../lib/page-renderer');
-const _jsonReader = require('../lib/json-reader');
 
 // global paths
 let templatePath = null;
 let cssPath = null;
 
-async function generator(configFilename, pageDefinitionFile, distPath){
-    // load config
-    const config = await _jsonReader(configFilename);
+// render template using given data
+async function renderTemplate(data={}){
+    // fetch css
+    data.inlinecss = await _fs.readFile(cssPath, 'utf8');
 
-    // load page definitions
-    const pages = await _jsonReader(pageDefinitionFile);
-
-    // load template
+    // fetch template
     const tpl = await _fs.readFile(templatePath, 'utf8');
    
-    // load css
-    const css = await _fs.readFile(cssPath, 'utf8');
+    // render template - use custom escape function to handle linebreaks!
+    return _ejs.render(tpl, data, {
+        escape: function(text){
+            // apply generic escape function
+            text = _ejs.escapeXML(text);
+
+            // linebreaks
+            text = text.replace(/\n/g, '<br />');
+
+            return text;
+        }
+    });
+}
+
+// parse json file and allow single line comments
+async function readJSONFile(filename){
+    // load file
+    let raw = await _fs.readFile(filename, 'utf8');
+
+    // strip single line js comments
+    raw = raw.replace(/^\s*\/\/.*$/gm, '');
+
+    // parse text
+    return JSON.parse(raw);
+}
+
+async function generator(configFilename, pageDefinitionFile, distPath){
+    // load config
+    const config = await readJSONFile(configFilename);
+
+    // load page definitions
+    const pages = await readJSONFile(pageDefinitionFile);
 
     console.log('Generating static pages');
 
@@ -40,7 +67,7 @@ async function generator(configFilename, pageDefinitionFile, distPath){
         pconf.footer = pconf.footer || config.footer;
 
         // render page
-        const content = await _pageRenderer(tpl, css, pconf);
+        const content = await renderTemplate(pconf);
 
         // generate filename
         const filename = 'HTTP' + p + '.html';

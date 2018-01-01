@@ -3,7 +3,6 @@ Preliminary
 
 ### 0.6.0 ###
 * New Generator/Build System: [EJS](https://github.com/mde/ejs) (templates), [SCSS](http://sass-lang.com/) (styles) and [GULP](https://gulpjs.com/) (build) are used as a replacement of the historical php/bash/ant/less setup.
-* New express.js handler (full asynchronous operation)
 * JSON based page definitions including **i18n** support
 * Option to use custom styles
 * Option to use custom template

@@ -1,6 +1,6 @@
 {
     "name": "http-error-pages",
-    "version": "1.0.0",
+    "version": "0.6.0",
     "description": "Simple HTTP Error Pages for expressjs",
     "engines": {
         "node": ">=7.6"
@@ -25,8 +25,6 @@
         "lib",
         "dist",
         "i18n",
-        "assets",
-        "bin",
         "express-demo.js",
         "CHANGES.md",
         "LICENSE.md",
@@ -46,6 +44,7 @@
         "eslint": "^4.11.0",
         "eslint-config-aenondynamics": "^0.2.0",
         "express": "^4.15.2",
+        "fs-magic": "^2.1.1",
         "gulp": "^3.9.1",
         "gulp-clean-css": "^3.9.0",
         "gulp-concat-util": "^0.5.5",
@@ -54,7 +53,6 @@
         "less": "^2.7.3"
     },
     "dependencies": {
-        "ejs": "^2.5.7",
-        "fs-magic": "^2.1.1"
+        "ejs": "^2.5.7"
     }
 }

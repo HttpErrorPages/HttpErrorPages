@@ -76,68 +76,35 @@ server {
 
 HttpErrorPages are available as NPM-Package - just install `http-error-pages` via **npm/yarn**
 
-**Installation**
-
 ```terminal
 npm install http-error-pages --save
 ```
 
-**Example**
+Example
 
 ```js
-const _express = require('express');
-const _webapp = _express();
+var _express = require('express');
+var _webapp = _express();
+var _httpErrorPages = require('http-error-pages');
 
-// use require('http-error-pages') for regular apps!
-const _httpErrorPages = require('./lib/error-handler');
+// demo handler
+_webapp.get('/', function(req, res){
+    res.type('.txt').send('HttpErrorPages Demo');
+});
 
-async function bootstrap(){
-    // demo handler
-    _webapp.get('/', function(req, res){
-        res.type('.txt').send('HttpErrorPages Demo');
-    });
+// throw an 403 error
+_webapp.get('/my403error', function(req, res, next){
+    var myError = new Error();
+    myError.status = 403;
+    next(myError);
+});
 
-    // throw an 403 error
-    _webapp.get('/my403error', function(req, res, next){
-        const myError = new Error();
-        myError.status = 403;
-        next(myError);
-    });
+// use http error pages handler (final statement!)
+_httpErrorPages(_webapp);
 
-    // throw an internal error
-    _webapp.get('/500', function(req, res){
-        throw new Error('Server Error');
-    });
-
-    // use http error pages handler (final statement!)
-    // because of the asynchronous file-loaders, wait until it has been executed
-    await _httpErrorPages(_webapp, {
-        lang: 'en_US',
-        footer: 'Hello <strong>World</strong>'
-    });
-
-    // start service
-    _webapp.listen(8888);
-}
-
-// invoke bootstrap operation
-bootstrap()
-    .then(function(){
-        console.log('Running Demo on Port 8888');
-    })
-    .catch(function(e){
-        console.error(e);
-    });
+// start service
+_webapp.listen(8888);
 ```
-
-**Options**
-
-Syntax: `Promise _httpErrorPages(expressWebapp [, options:Object])`
-
-* `template` - the path to a custom **EJS** template used to generate the pages. default [assets/template.ejs](assets/template.ejs)
-* `css` - the path to a precompiled **CSS** file injected into the page. default [assets/layout.css](assets/layout.css)
-* `footer` - optional page footer content (html allowed). default **null**
-* `lang` - language definition which should be used (available in the `i18n/` directory). default **en_US**
 
 ## Apache Httpd Integration ##
 [Apache Httpd 2.x](http://httpd.apache.org/) supports custom error-pages using multiple [ErrorDocument](http://httpd.apache.org/docs/2.4/mod/core.html#errordocument) directives.
