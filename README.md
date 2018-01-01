@@ -1,9 +1,3 @@
-[nginx](#nginx-integration) | 
-[expressjs](#expressjs-integration) | 
-[Apache HTTPD](#apache-httpd-integration) | 
-[Lighttpd](#lighttpd-integration) | 
-[Customization](#customization)
-
 # Simple HttpErrorPages #
 Simple HTTP Error Page Generator. Create a bunch of custom error pages - suitable to use with Lighttpd, Nginx, expressjs, Apache-Httpd or any other Webserver.
 
@@ -24,15 +18,19 @@ Simple HTTP Error Page Generator. Create a bunch of custom error pages - suitabl
 ## Download ##
 Just clone/download the git repository **or** use the prebuild packages (only the generated html files are included)
 
-## Download Prebuild Packages (Pages only, en_US) ##
+## Download Prebuild Packages (Pages only) ##
 
 **Direct Download**
 * [Download TAR Archive](https://raw.githubusercontent.com/AndiDittrich/HttpErrorPages/master/dist/pages.tar)
+* [Download ZIP Archive](https://raw.githubusercontent.com/AndiDittrich/HttpErrorPages/master/dist/pages.zip)
 
 **Shell/Bash**
 ```shell
 # TAR Archive
 wget https://raw.githubusercontent.com/AndiDittrich/HttpErrorPages/master/dist/pages.tar
+
+# ZIP Archive
+wget https://raw.githubusercontent.com/AndiDittrich/HttpErrorPages/master/dist/pages.zip
 ```
 
 ## NGINX Integration ##
@@ -137,176 +135,75 @@ server.errorfile-prefix = "/var/www/ErrorPages/HTTP"
 ```
 
 ## Customization ##
+To customize the pages, you can edit the **template.phtml** file and add your own styles. Finally run the generator-script.
+If you wan't to add custom pages/additional error-codes, just put a new entry into the `pages.php` file. The generator-script will process each entry and generates an own page.
 
-First of all, [clone](https://github.com/AndiDittrich/HttpErrorPages.git) 
-or [download](https://github.com/AndiDittrich/HttpErrorPages/archive/master.zip) the http-error-pages repository.
+#### Custom Page Example (pages.php) ####
 
-### Install Dependencies ###
+Custom Error-Codes used by e.g. CloudFlare
 
-You have to install the node **dev** dependencies to build the pages:
-
-```bash
-# run the yarn command within the cloned repository
-yarn install
-
-# or if you more familiar with npm..
-npm install
-```
-
-To customize the pages, you can edit any of the template files and **finally run the generator-script**.
-All generated html files are located into the `dist/` directory by default.
-
-If you wan't to add custom pages/additional error-codes, just put a new entry into the `i18n/pages-en_US.json` file (its recommended to copy the file). 
-The generator-script will process each entry and generates an own page.
-
-### Files ###
-
-* [config.json](config.json) - basic configuration options
-* [assets/layout.scss](assets/layout.scss) - the SCSS based styles
-* [assets/template.ejs](assets/template.ejs) - the EJS based page template
-* [i18n/pages-<lang>.json](i18n/) - the page definitions (multilanguage)
-* [dist/*.html](dist/) - generator output directory
-
-### Change page styles ###
-
-To modify the page styles, just edit the SCSS based layout [assets/layout.scss](assets/layout.scss) and finally run **gulp** to generate the css code.
-The new layout file is stored in [assets/layout.css](assets/layout.css) - run the page generator to create the pages.
-
-**Example**
-
-```bash
-# start gulp sccs via npm
-$ npm run gulp
-
-> http-error-pages@0.6.0 gulp HttpErrorPages
-> gulp
-
-[08:40:33] Using gulpfile HttpErrorPages/gulpfile.js
-[08:40:33] Starting 'sass'...
-[08:40:34] Finished 'sass' after 108 ms
-[08:40:34] Starting 'default'...
-[08:40:34] Finished 'default' after 40 μs
-
-# generate http-error-pages using modified stylesheet
-$ npm run static
-
-> http-error-pages@0.6.0 static HttpErrorPages
-> node bin/generator.js static
-
-Paths
- |- Config: HttpErrorPages/config.json
- |- Template: HttpErrorPages/assets/template.ejs
- |- Styles: HttpErrorPages/assets/layout.css
- |- Pages: HttpErrorPages/i18n/pages-en_US.json
-
-Generating static pages
- |- Page <HTTP404.html>
- |- Page <HTTP403.html>
- |- Page <HTTP400.html>
- |- Page <HTTP500.html>
- |- Page <HTTP501.html>
- |- Page <HTTP502.html>
- |- Page <HTTP520.html>
- |- Page <HTTP503.html>
- |- Page <HTTP521.html>
- |- Page <HTTP533.html>
- |- Page <HTTP401.html>
-Static files generated
-```
-
-### Add custom pages ###
-
-Create custom error codes/pages used by e.g. CloudFlare
-
-**Example**
-```js
+```php
 // webserver origin error
-"520": {
-    "title": "Origin Error - Unknown Host",
-    "message": "The requested hostname is not routed. Use only hostnames to access resources."
-},
+'520' => array(
+    'title' => 'Origin Error - Unknown Host',
+    'message' => 'The requested hostname is not routed. Use only hostnames to access resources.'
+),
 
 // webserver down error
-"521": {
-    "title": "Webservice currently unavailable",
-    "message": "We've got some trouble with our backend upstream cluster.\nOur service team has been dispatched to bring it back online."
-},
+'521' => array (
+    'title' => 'Webservice currently unavailable',
+    'message' => "We've got some trouble with our backend upstream cluster.\nOur service team has been dispatched to bring it back online."
+)
 ```
 
-### Change footer message ###
+### Build/Generator ###
+* Install packages using npm or yarn and have php in your executable path* 
+Used Naming-Scheme: `HTTP#CODE#.html` (customizable by editing the `config.ini`)
+To generate the static html pages, run the `generator.php` script:
 
-The footer message can easily be changed/removed by editing [config.json](config.json).
-
-**Example - customm footer**
-
-```js
-{
-    //  Output Filename Scheme - eg. HTTP500.html
-    "scheme": "HTTP%d.html",
-
-    // Footer content (HTML Allowed)
-    "footer": "Contact <a href=\"mailto:info@example.org\">info@example.org</a>"
-}
+```shell
+npm run generate-php
 ```
 
-**Example - no footer**
+All generated html files are located into the `dist/` directory by default.
 
-```js
-{
-    //  Output Filename Scheme - eg. HTTP500.html
-    "scheme": "HTTP%d.html"
-}
+### Compile LESS Files ###
+To rebuild the LESS files run the :
+
+```shell
+npm run generate-css
 ```
 
-### Modify the HTML template ###
+### Build all ###
 
-The HTML template is based on [ejs](https://github.com/mde/ejs) and located in [assets/template.ejs](assets/template.ejs) - you can apply any kind of changes.
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>HTTP<%= code %> - <%= title %></title>
-</head><body>
-    <h2>Hello World</h2>
-    <div class="cover"><h1><%= title %> <small>Error <%= code %></small></h1><p class="lead"><%= message %></p></div>
-</body></html>
+```shell
+npm run generate
 ```
 
-### Command line options ###
 
-The [http-error-pages generator](bin/generator.js) allows you to use custom template/config files directly. **This is the recommended method to create full-customized pages.**
+### Less CSS ### 
 
-```terminal
-$ npm run static -- --help
+Modify the `assets/Layout.less` to make your own design styles (Make sure to run build scripts after editing the files)
 
-> http-error-pages@0.6.0 static HttpErrorPages
-> node bin/generator.js static "--help"
+### Configuration ###
 
-  Usage: static [options] [config]
+It's possible to change the basic configuration without modifying the generator script. Just change the following variables within the `config.ini`.
 
-  run http-error-pages generator
+You can also specify a custom configuration file by passing it as first argument to the generator script `php generator.php path/myconfig.ini`
 
-  Options:
+**config.ini**
 
-    -t, --template <path>  path to your custom EJS template file
-    -s, --styles <path>    path to your custom stylesheet (precompiled as CSS!)
-    -p, --pages <path>     path to your custom page definition
-    -l, --lang <lang>      the language of the default page definition
-    -o, --out <path>       output directory
-    -h, --help             output usage information
-```
+```ini
+[global]
 
-**Example - use custom files**
+; Output Filename Scheme - eg. HTTP500.html
+scheme='HTTP%d.html'
 
-We assume you've created a folder named `example_org` which contains all relevant template files
+; Output dir path
+output_dir="docs/"
 
-```bash
-# via npm run-script (cross platform)
-$ npm run static -- -t example_org/template.ejs -s example_org/styles.css -p example_org/pages.json -o example_org/output
-
-# .. or directly (linux only)
-$ http-error-pages -t example_org/template.ejs -s example_org/styles.css -p example_org/pages.json -o example_org/output
+; Footer content (HTML Allowed)
+footer = "Technical Contact: <a href="mailto:x@example.com">x@example.com</a>"
 ```
 
 ## License ##
