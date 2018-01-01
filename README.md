@@ -60,40 +60,6 @@ location /ErrorPages/ {
 }
 ```
 
-## expressjs Integration ##
-
-HttpErrorPages are available as NPM-Package - just install `http-error-pages` via **npm/yarn**
-
-```terminal
-npm install http-error-pages --save
-```
-
-Example
-
-```js
-var _express = require('express');
-var _webapp = _express();
-var _httpErrorPages = require('http-error-pages');
-
-// demo handler
-_webapp.get('/', function(req, res){
-    res.type('.txt').send('HttpErrorPages Demo');
-});
-
-// throw an 403 error
-_webapp.get('/my403error', function(req, res, next){
-    var myError = new Error();
-    myError.status = 403;
-    next(myError);
-});
-
-// use http error pages handler (final statement!)
-_httpErrorPages(_webapp);
-
-// start service
-_webapp.listen(8888);
-```
-
 ## Apache Httpd Integration ##
 [Apache Httpd 2.x](http://httpd.apache.org/) supports custom error-pages using multiple [ErrorDocument](http://httpd.apache.org/docs/2.4/mod/core.html#errordocument) directives.
 
