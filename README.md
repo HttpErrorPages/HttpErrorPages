@@ -39,7 +39,7 @@ wget https://raw.githubusercontent.com/AndiDittrich/HttpErrorPages/master/dist/p
 
 File: [`default.conf`](https://www.nginx.com/resources/wiki/start/topics/examples/full/)
 
-Example - assumes HttpErrorPages are located into `/var/ErrorPages/`.
+Example - assumes HttpErrorPages are located into `/var/www/ErrorPages/`.
 
 ```nginx
 server {
@@ -65,7 +65,7 @@ server {
 
     # redirect the virtual ErrorPages path the real path
     location /ErrorPages/ {
-        alias /var/ErrorPages/;
+        alias /var/www/ErrorPages/;
         internal;
     }
 ```
