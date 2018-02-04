@@ -1,13 +1,22 @@
 [nginx](#nginx-integration) | 
-[expressjs](#expressjs-integration) | 
 [Apache HTTPD](#apache-httpd-integration) | 
 [Lighttpd](#lighttpd-integration) | 
+[express.js](#expressjs-integration) | 
+[koa.js](#koajs-integration) | 
 [Customization](#customization)
 
 # Simple HttpErrorPages #
-Simple HTTP Error Page Generator. Create a bunch of custom error pages - suitable to use with Lighttpd, Nginx, expressjs, Apache-Httpd or any other Webserver.
+Simple HTTP Error Page Generator. Create a bunch of custom error pages - suitable to use with Lighttpd, Nginx, expressjs, koajs ,Apache-Httpd or any other Webserver.
 
 ![Screenshot](https://raw.githubusercontent.com/AndiDittrich/HttpErrorPages/master/assets/screenshot1.png)
+
+## Features ##
+
+* Static pages (for webservers)
+* Multi-Language (i18n) support
+* Generator script to customize pages
+* Native [express.js](http://expressjs.com/) middleware
+* Native [koa.js](http://koajs.com/) middleware
 
 ## Demo ##
 * [HTTP400](https://andidittrich.github.io/HttpErrorPages/HTTP400.html)
@@ -72,73 +81,6 @@ server {
     }
 ```
 
-## expressjs Integration ##
-
-HttpErrorPages are available as NPM-Package - just install `http-error-pages` via **npm/yarn**
-
-**Installation**
-
-```terminal
-npm install http-error-pages --save
-```
-
-**Example**
-
-```js
-const _express = require('express');
-const _webapp = _express();
-
-// use require('http-error-pages') for regular apps!
-const _httpErrorPages = require('./lib/error-handler');
-
-async function bootstrap(){
-    // demo handler
-    _webapp.get('/', function(req, res){
-        res.type('.txt').send('HttpErrorPages Demo');
-    });
-
-    // throw an 403 error
-    _webapp.get('/my403error', function(req, res, next){
-        const myError = new Error();
-        myError.status = 403;
-        next(myError);
-    });
-
-    // throw an internal error
-    _webapp.get('/500', function(req, res){
-        throw new Error('Server Error');
-    });
-
-    // use http error pages handler (final statement!)
-    // because of the asynchronous file-loaders, wait until it has been executed
-    await _httpErrorPages(_webapp, {
-        lang: 'en_US',
-        footer: 'Hello <strong>World</strong>'
-    });
-
-    // start service
-    _webapp.listen(8888);
-}
-
-// invoke bootstrap operation
-bootstrap()
-    .then(function(){
-        console.log('Running Demo on Port 8888');
-    })
-    .catch(function(e){
-        console.error(e);
-    });
-```
-
-**Options**
-
-Syntax: `Promise _httpErrorPages(expressWebapp [, options:Object])`
-
-* `template` - the path to a custom **EJS** template used to generate the pages. default [assets/template.ejs](assets/template.ejs)
-* `css` - the path to a precompiled **CSS** file injected into the page. default [assets/layout.css](assets/layout.css)
-* `footer` - optional page footer content (html allowed). default **null**
-* `lang` - language definition which should be used (available in the `i18n/` directory). default **en_US**
-
 ## Apache Httpd Integration ##
 [Apache Httpd 2.x](http://httpd.apache.org/) supports custom error-pages using multiple [ErrorDocument](http://httpd.apache.org/docs/2.4/mod/core.html#errordocument) directives.
 
@@ -169,6 +111,124 @@ Example - assumes HttpErrorPages are located into `/var/www/ErrorPages/`.
 server.errorfile-prefix = "/var/www/ErrorPages/HTTP"
 ```
 
+## expressjs Integration ##
+
+HttpErrorPages are available as NPM-Package - just install `http-error-pages` via **npm/yarn**
+
+**Installation**
+
+```terminal
+yarn add http-error-pages
+```
+
+**Example**
+
+A ready-to-use example can be found in [examples/express.js](exmaples/express.js)
+
+```js
+const _express = require('express');
+const _webapp = _express();
+const _httpErrorPages = require('http-error-pages');
+
+async function bootstrap(){
+    // demo handler
+    _webapp.get('/', function(req, res){
+        res.type('.txt').send('HttpErrorPages Demo');
+    });
+
+    // throw an 403 error
+    _webapp.get('/my403error', function(req, res, next){
+        const myError = new Error();
+        myError.status = 403;
+        next(myError);
+    });
+
+    // throw an internal error
+    _webapp.get('/500', function(req, res){
+        throw new Error('Server Error');
+    });
+
+    // use http error pages handler (final statement!)
+    // because of the asynchronous file-loaders, wait until it has been executed
+    await _httpErrorPages.express(_webapp, {
+        lang: 'en_US',
+        footer: 'Hello <strong>World</strong>'
+    });
+
+    // start service
+    _webapp.listen(8888);
+}
+
+// invoke bootstrap operation
+bootstrap()
+    .then(function(){
+        console.log('Running Demo on Port 8888');
+    })
+    .catch(function(e){
+        console.error(e);
+    });
+```
+
+**Options**
+
+Syntax: `Promise _httpErrorPages.express(expressWebapp [, options:Object])`
+
+* `template` - the path to a custom **EJS** template used to generate the pages. default [assets/template.ejs](assets/template.ejs)
+* `css` - the path to a precompiled **CSS** file injected into the page. default [assets/layout.css](assets/layout.css)
+* `footer` - optional page footer content (html allowed). default **null**
+* `lang` - language definition which should be used (available in the `i18n/` directory). default **en_US**
+
+## koajs Integration ##
+
+HttpErrorPages are available as NPM-Package - just install `http-error-pages` via **npm/yarn**
+
+**Installation**
+
+```terminal
+yarn add http-error-pages
+```
+
+**Example**
+
+A ready-to-use example can be found in [examples/koa.js](exmaples/koa.js). 
+Keep in mind that the following example has to be executed within an async context!
+
+```js
+const _koa = require('koa');
+const _webapp = new _koa();
+const _httpErrorPages = require('http-error-pages');
+
+// use http error pages handler (INITIAL statement!)
+// because of the asynchronous file-loaders, wait until it has been executed - it returns an async handler
+_webapp.use(await _httpErrorPages.koa({
+    lang: 'en_US',
+    footer: 'Hello <strong>World</strong>'
+}));
+
+// add other middleware handlers
+_webapp.use(async (ctx, next) => {
+    if (ctx.path == '/'){
+        ctx.type = 'text';
+        ctx.body = 'HttpErrorPages Demo';
+    }else{
+        return next();
+    }
+});
+
+// start service
+_webapp.listen(8888);
+```
+
+**Options**
+
+Syntax: `Promise _httpErrorPages.koa([options:Object])`
+
+* `template` - the path to a custom **EJS** template used to generate the pages. default [assets/template.ejs](assets/template.ejs)
+* `css` - the path to a precompiled **CSS** file injected into the page. default [assets/layout.css](assets/layout.css)
+* `footer` - optional page footer content (html allowed). default **null**
+* `lang` - language definition which should be used (available in the `i18n/` directory). default **en_US**
+
+
 ## Customization ##
 
 First of all, [clone](https://github.com/AndiDittrich/HttpErrorPages.git) 
@@ -186,7 +246,7 @@ yarn install
 npm install
 ```
 
-To customize the pages, you can edit any of the template files and **finally run the generator-script**.
+To customize the pages, you can edit any of the [template files](assets/) and **finally run the generator-script**.
 All generated html files are located into the `dist/` directory by default.
 
 If you wan't to add custom pages/additional error-codes, just put a new entry into the `i18n/pages-en_US.json` file (its recommended to copy the file). 

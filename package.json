@@ -1,7 +1,7 @@
 {
     "name": "http-error-pages",
-    "version": "1.0.0",
-    "description": "Simple HTTP Error Pages for expressjs",
+    "version": "2.0.0",
+    "description": "Simple HTTP Error Pages. standalone + static + koa + express",
     "engines": {
         "node": ">=7.6"
     },
@@ -27,7 +27,7 @@
         "i18n",
         "assets",
         "bin",
-        "express-demo.js",
+        "examples",
         "CHANGES.md",
         "LICENSE.md",
         "README.md"
@@ -35,7 +35,7 @@
     "bin": {
         "http-error-pages": "./bin/generator.js"
     },
-    "main": "./lib/error-handler.js",
+    "main": "./lib/main.js",
     "author": "Andi Dittrich (https://andidittrich.de)",
     "homepage": "https://github.com/AndiDittrich/HttpErrorPages",
     "bugs": "https://github.com/AndiDittrich/HttpErrorPages/issues",
@@ -51,6 +51,7 @@
         "gulp-concat-util": "^0.5.5",
         "gulp-prettyerror": "^1.2.1",
         "gulp-sass": "^3.1.0",
+        "koa": "^2.4.1",
         "less": "^2.7.3"
     },
     "dependencies": {

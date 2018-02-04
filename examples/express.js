@@ -2,7 +2,7 @@ const _express = require('express');
 const _webapp = _express();
 
 // use require('http-error-pages') for regular apps!
-const _httpErrorPages = require('./lib/error-handler');
+const _httpErrorPages = require('../lib/main');
 
 async function bootstrap(){
     // demo handler
@@ -24,7 +24,7 @@ async function bootstrap(){
 
     // use http error pages handler (final statement!)
     // because of the asynchronous file-loaders, wait until it has been executed
-    await _httpErrorPages(_webapp, {
+    await _httpErrorPages.express(_webapp, {
         lang: 'en_US',
         footer: 'Hello <strong>World</strong>'
     });

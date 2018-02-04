@@ -1,6 +1,13 @@
 CHANGELOG
 ======================================================
 
+Version 2.X.X
+------------------------------------------------------
+* Added [koa](http://koajs.com/) support
+* Added support for multiple http frameworks
+* Changed: **express.js** error handler is encapsulated within the `express()` function
+* Changed: moved middleware example to `examples/`
+
 Version 1.X.X
 ------------------------------------------------------
 
