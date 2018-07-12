@@ -3,6 +3,7 @@
 [Lighttpd](#lighttpd-integration) | 
 [express.js](#expressjs-integration) | 
 [koa.js](#koajs-integration) | 
+[Caddy](#caddy-integration) |
 [Customization](#customization)
 
 # Simple HttpErrorPages #
@@ -228,6 +229,27 @@ Syntax: `Promise _httpErrorPages.koa([options:Object])`
 * `footer` - optional page footer content (html allowed). default **null**
 * `lang` - language definition which should be used (available in the `i18n/` directory). default **en_US**
 
+## Caddy Integration ##
+
+[Caddy](https://caddyserver.com/docs/errors) supports custom error-pages using `errors` directive. 
+
+File: Caddyfile
+
+Example - assumes HttpErrorPages are located into `/var/www/error`.
+
+```Caddyfile
+www.yoursite.com {
+    
+    // Other configurations
+
+    errors {
+        404 /var/www/error/HTTP404.html
+    }
+
+    // Other configurations
+
+}
+```
 
 ## Customization ##
 
