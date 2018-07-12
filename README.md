@@ -3,6 +3,7 @@
 [Lighttpd](#lighttpd-integration) | 
 [express.js](#expressjs-integration) | 
 [koa.js](#koajs-integration) | 
+[Caddy](#caddy-Integration) |
 [Customization](#customization)
 
 # Simple HttpErrorPages #
