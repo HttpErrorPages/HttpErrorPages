@@ -1,0 +1,69 @@
+{        
+    // STANDARD ERROR CODES
+    // =======================================================
+
+    "400": {
+        "title": "Bad Request",
+        "message": "Le serveur ne peut pas traiter la requête en raison d'une erreur perçue comme étant une erreur du client." 
+    },
+    "401": {
+        "title": "Non autorisé",
+        "message": "La ressource demandée nécessite une authentification."
+    },
+
+    "403": {
+        "title": "Accès refusé",
+        "message": "La ressource demandée nécessite une authentification." 
+    },
+    
+    // http 404 not found
+    "404": {
+        "title": "Ressource non trouvée",
+        "message": "La ressource demandée n'a pu être trouvée, mais elle pourrait être de nouveau disponible à l'avenir." 
+    },
+    
+    // internal server error
+    "500": {
+        "title": "Service Web actuellement indisponible",
+        "message": "Une condition inattendue a été rencontrée. Notre équipe de service a été dépêchée pour la remettre en service." 
+    },
+    
+    // unknown http method
+    "501": {
+        "title": "Non implémenté",
+        "message": "Le serveur Web ne peut pas reconnaître la méthode de requête."
+    },
+    
+    // http proxy forward error
+    "502": {
+        "title": "Service Web actuellement indisponible",
+        "message": "Nous avons quelques problèmes avec notre cluster en amont. Notre équipe de service a été dépêchée pour le remettre en ligne."
+    },
+    
+    // webserver service error
+    "503": {
+        "title": "Service Web actuellement indisponible",
+        "message": "Nous avons quelques problèmes avec notre cluster en amont. Notre équipe de service a été dépêchée pour le remettre en ligne."
+    },
+    
+    // CUSTOM ERROR CODES
+    // =======================================================
+
+    // webserver origin error
+    "520": {
+        "title": "Origin Error - Unknown Host",
+        "message": "Le nom d'hôte demandé n'est pas routé. Utilisez uniquement les noms d'hôtes pour accéder aux ressources."
+    },
+    
+    // webserver down error
+    "521": {
+        "title": "Service Web actuellement indisponible",
+        "message": "Nous avons quelques problèmes avec notre cluster en amont. Notre équipe de service a été dépêchée pour le remettre en ligne."
+    },
+    
+    // maintenance
+    "533": {
+        "title": "Maintenance Programmée",
+        "message": "Ce site est actuellement en maintenance. Notre équipe de service travaille dur pour le remettre en ligne prochainement."                
+    }
+}
