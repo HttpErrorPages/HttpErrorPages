@@ -1,0 +1,77 @@
+{        
+    // STANDARD ERROR CODES
+    // https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+    // =======================================================
+
+    // http 400 Bad Request
+    "400": {
+        "title": "Solicitud incorrecta",
+        "message": "El servidor no puede procesar la solicitud debido a un error en la petición del cliente, por favor <b>modifique su petición</b> e intente de nuevo." 
+    },
+
+    // http 401 Unauthorized
+    "401": {
+        "title": "No autorizado",
+        "message": "El recurso solicitado requiere de una autorización."
+    },
+
+    // http 403 Forbidden
+    "403": {
+        "title": "Acceso denegado",
+        "message": "El recurso está prohibido, por favor NO reintente su solicitud." 
+    },
+    
+    // http 404 Not Found
+    "404": {
+        "title": "Recurso no encontrado",
+        "message": "El recurso solicitado no se pudo encontrar, pero podría estar disponible a futuro." 
+    },
+    
+    // http 500 Internal Server Error
+    "500": {
+        "title": "Hemos sufrido un error interno",
+        "message": "Eso es lo que sabemos, ya un equipo se apresta a localizar el fallo en nuestro servidor web." 
+    },
+    
+    // http 501 Not Implemented
+    "501": {
+        "title": "No implementado",
+        "message": "El servidor web no puede reconocer el método de solicitud."
+    },
+    
+    // http 502 Bad Gateway
+    "502": {
+        "title": "Servicio web proxy actualmente no disponible",
+        "message": "Tenemos algunos problemas con nuestro racimo. Nuestro equipo de servicio fue enviado para restablecerlo nuevamente en línea."
+    },
+    
+    // http 503 Service Unavailable
+    "503": {
+        "title": "Servicio web actualmente no disponible",
+        "message": "Se encontró una condición inesperada. Nuestro equipo de servicio está abocado para colocarlo nuevamente en servicio."
+    },
+
+    //https://tools.ietf.org/html/rfc6585#section-6
+    // http 511 Network Authentication Required (offer a URL for login)
+    
+    // CUSTOM ERROR CODES
+    // =======================================================
+
+    // webserver origin error
+    "520": {
+        "title": "Error de origen: anfitrión desconocido",
+        "message": "El nombre de anfitrión solicitado no se encontró en ruta. Utilice solo nombres de anfitrión para acceder a los recursos."
+    },
+    
+    // webserver down error
+    "521": {
+        "title": "Servicio web no disponible por ahora",
+        "message": "Tenemos algunos problemas con nuestro servicio, un equipo ya está trabajando para colocarlo de nuevo en línea."
+    },
+    
+    // maintenance
+    "533": {
+        "title": "Mantenimiento progamado",
+        "message": "Nuestro sitio está en mantenimiento y trabajamos para que muy pronto estaremos en línea de nuevo, agradecemos paciencia."                
+    }
+}
