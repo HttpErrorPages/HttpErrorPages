@@ -43,16 +43,16 @@
     "license": "MIT",
     "devDependencies": {
         "commander": "^2.11.0",
-        "eslint": "^4.11.0",
+        "eslint": "^5.16.0",
         "eslint-config-aenondynamics": "^0.2.0",
-        "express": "^4.15.2",
-        "gulp": "^3.9.1",
-        "gulp-clean-css": "^3.9.0",
+        "express": "^4.17.1",
+        "gulp": "^4.0.2",
+        "gulp-clean-css": "^4.2.0",
         "gulp-concat-util": "^0.5.5",
         "gulp-prettyerror": "^1.2.1",
-        "gulp-sass": "^3.1.0",
+        "gulp-sass": "^4.0.2",
         "koa": "^2.4.1",
-        "less": "^2.7.3"
+        "less": "^3.9.0"
     },
     "dependencies": {
         "ejs": "^2.5.7",
