@@ -26,6 +26,13 @@ async function generator(configFilename, pageDefinitionFile, distPath){
     // load css
     const css = await _fs.readFile(cssPath, 'utf8');
 
+    console.log('Create/Empty distribution folder: "'+distPath+'"\n');
+
+    if(_fs.exists(distPath)) {
+        await _fs.rmrf(distPath);
+    }
+    await _fs.mkdirp(distPath);
+
     console.log('Generating static pages');
 
     // for each errorcode generate custom page
@@ -43,8 +50,13 @@ async function generator(configFilename, pageDefinitionFile, distPath){
         const content = await _pageRenderer(tpl, css, pconf);
 
         // generate filename
-        const filename = 'HTTP' + p + '.html';
+        let filename = 'HTTP' + p + '.html';
 
+        // check filename schema
+        if(config && config.scheme && config.scheme.indexOf("%d") !== -1) {
+            filename =  config.scheme.replace('%d', p);
+        }
+        
         // write content to file
         await _fs.writeFile(_path.join(distPath, filename), content, 'utf8');
 
