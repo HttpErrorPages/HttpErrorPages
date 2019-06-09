@@ -2,20 +2,21 @@
     // STANDARD ERROR CODES
     // =======================================================
 
+    //http 400 bad request
     "400": {
-        "title": "Bad Request",
+        "title": "Richiesta non valida",
         "message": "Il server non può elaborare la richiesta a causa di qualcosa che è percepito come un errore del client." 
     },
 
     //http 401 unauthorized
     "401": {
-        "title": "Non Autorizzato",
+        "title": "Accesso negato",
         "message": "La risorsa richiesta richiede un'autenticazione."
     },
 
     // http 403 access denied
     "403": {
-        "title": "Accesso Negato",
+        "title": "Operazione non consentita",
         "message": "La risorsa richiesta richiede un'autenticazione." 
     },
     
@@ -34,18 +35,24 @@
     // unknown http method
     "501": {
         "title": "Non implementato",
-        "message": "Il server Web non è in grado di riconoscere il metodo di richiesta."
+        "message": "Il server Web non è in grado di riconoscere il metodo della richiesta."
     },
     
-    // http proxy forward error
+    // webserver - bad gateway
     "502": {
-        "title": "Web Server attualmente non disponibile",
+        "title": "Web Server attualmente non disponibile - Gateway non valido",
         "message": "Abbiamo qualche problema con il nostro cluster back-end.\nIl nostro team di assistenza è stato inviato per riportarlo online."
     },
     
-    // webserver service error
+    // webserver - service unavailable
     "503": {
         "title": "Web Server attualmente non disponibile",
+        "message": "Abbiamo qualche problema con il nostro cluster back-end.\nIl nostro team di assistenza è stato inviato per riportarlo online."
+    },
+
+    // webserver - gateway timeout
+    "504": {
+        "title": "Web Server attualmente non disponibile - Timeout del gateway",
         "message": "Abbiamo qualche problema con il nostro cluster back-end.\nIl nostro team di assistenza è stato inviato per riportarlo online."
     },
     
