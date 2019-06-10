@@ -63,8 +63,6 @@ async function generator(configFilename, pageDefinitionFile, distPath){
         // inject footer
         pconf.footer = pconf.footer || config.footer;
 
-        
-
         // render page
         const content = await _pageRenderer(tpl, css, pconf);
 

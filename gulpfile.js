@@ -4,8 +4,6 @@ const _prettyError = require('gulp-prettyerror');
 const _cleanCSS = require('gulp-clean-css');
 const _concat = require('gulp-concat-util');
 
-_gulp.task('default', ['sass']);
- 
 _gulp.task('sass', function (){
     return _gulp.src('./assets/layout.scss')
         .pipe(_prettyError())
@@ -15,5 +13,9 @@ _gulp.task('sass', function (){
         .pipe(_concat('layout.css'))
 
         .pipe(_gulp.dest('./assets'));
-});
+}); 
+
+_gulp.task('default', _gulp.series(['sass']));
+ 
+
  
