@@ -1,14 +1,19 @@
 CHANGELOG
 ======================================================
 
-Version 2.X.X
+Branch 2.X.X
 ------------------------------------------------------
+
+### 2.0.1 ###
+* Bugfix: gulp4 compatibility
+
+### 2.0.0 ###
 * Added [koa](http://koajs.com/) support
 * Added support for multiple http frameworks
 * Changed: **express.js** error handler is encapsulated within the `express()` function
 * Changed: moved middleware example to `examples/`
 
-Version 1.X.X
+Branch 1.X.X
 ------------------------------------------------------
 
 ### 1.0.0 ###
