@@ -26,7 +26,9 @@ async function bootstrap(){
     // because of the asynchronous file-loaders, wait until it has been executed
     await _httpErrorPages.express(_webapp, {
         lang: 'en_US',
-        footer: 'Hello <strong>World</strong>'
+        footer: 'Hello <strong>World</strong>',
+        error: 'Error %code%',
+        page_title: "We've got some trouble | %code% - %title%",
     });
 
     // start service

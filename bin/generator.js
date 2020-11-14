@@ -26,25 +26,54 @@ async function generator(configFilename, pageDefinitionFile, distPath){
     // load css
     const css = await _fs.readFile(cssPath, 'utf8');
 
+    const lang = pageDefinitionFile.substr(-10, 2);
+
+    console.log('Create/Empty distribution folder: "'+distPath+'"\n');
+
+    if(await _fs.exists(distPath)) {
+        await _fs.rmrf(distPath);
+    }
+    await _fs.mkdirp(distPath);
+
     console.log('Generating static pages');
 
     // for each errorcode generate custom page
-    await Promise.all(Object.keys(pages).map(async function(p){
+    await Promise.all(Object.keys(pages).map(async function(code){
         // page config
-        const pconf = pages[p];
+        const pconf = pages[code];
 
         // inject errorcode
-        pconf.code = p;
+        pconf.code = code;
 
-        // inject foote
+        // inject lang
+        pconf.lang = lang || 'en';
+
+        // inject page title
+        if(config && config.page_title) {
+            pconf.page_title = config.page_title.replace('%code%', code);
+            pconf.page_title = pconf.page_title.replace('%title%', pconf.title);
+        }
+
+        // inject error
+        pconf.error = 'Error '+ pconf.code 
+        if(config && config.error) {
+            pconf.error = config.error.replace('%code%', code);
+        }
+
+        // inject footer
         pconf.footer = pconf.footer || config.footer;
 
         // render page
         const content = await _pageRenderer(tpl, css, pconf);
 
         // generate filename
-        const filename = 'HTTP' + p + '.html';
+        let filename = 'HTTP' + code + '.html';
 
+        // check filename schema
+        if(config && config.scheme && config.scheme.indexOf("%code%") !== -1) {
+            filename =  config.scheme.replace('%code%', code);
+        }
+        
         // write content to file
         await _fs.writeFile(_path.join(distPath, filename), content, 'utf8');
 
@@ -105,6 +134,7 @@ _cli
             })
             .catch(function(e){
                 console.error(e);
+                console.log('\nStatic files not generated\n');
             });
     });
 

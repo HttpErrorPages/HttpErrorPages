@@ -10,7 +10,9 @@ async function bootstrap(){
     // because of the asynchronous file-loaders, wait until it has been executed - it returns an async handler
     _webapp.use(await _httpErrorPages.koa({
         lang: 'en_US',
-        footer: 'Hello <strong>World</strong>'
+        footer: 'Hello <strong>World</strong>',
+        error: 'Error %code%',
+        page_title: "We've got some trouble | %code% - %title%",
     }));
 
     // demo handler

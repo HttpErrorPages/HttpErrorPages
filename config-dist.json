@@ -1,6 +1,16 @@
 {
-    //  Output Filename Scheme - eg. HTTP500.html
-    "scheme": "HTTP%d.html",
+    // Output Filename Scheme - eg. HTTP500.html
+    // %code% - HTTP error code eg. 400
+    "scheme": "HTTP%code%.html",
+
+    // Page title (HTML not allowed)
+    // %code% - HTTP error code eg. 400
+    // %title% - HTTP error eg. Bad Request
+    "page_title": "We've got some trouble | %code% - %title%",
+
+    // Error (HTML not allowed)
+    // %code% - HTTP error code eg. 400
+    "error": "Error %code%",
 
     // Footer content (HTML Allowed)
     "footer": null

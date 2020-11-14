@@ -13,6 +13,7 @@ _gulp.task('sass', function (){
         .pipe(_concat('layout.css'))
 
         .pipe(_gulp.dest('./assets'));
-});
+}); 
+
+_gulp.task('default', _gulp.series(['sass']));
  
-_gulp.task('default', _gulp.series('sass'));

@@ -1,0 +1,79 @@
+{        
+    // STANDARD ERROR CODES
+    // =======================================================
+
+    //http 400 bad request
+    "400": {
+        "title": "Richiesta non valida",
+        "message": "Il server non può elaborare la richiesta a causa di qualcosa che è percepito come un errore del client." 
+    },
+
+    //http 401 unauthorized
+    "401": {
+        "title": "Accesso negato",
+        "message": "La risorsa richiesta richiede un'autenticazione."
+    },
+
+    // http 403 access denied
+    "403": {
+        "title": "Operazione non consentita",
+        "message": "La risorsa richiesta richiede un'autenticazione." 
+    },
+    
+    // http 404 not found
+    "404": {
+        "title": "Risorsa non trovata",
+        "message": "La risorsa richiesta non è stata trovata ma potrebbe essere nuovamente disponibile in futuro." 
+    },
+    
+    // internal server error
+    "500": {
+        "title": "Web Server attualmente non disponibile",
+        "message": "Si è verificata una condizione imprevista.\nIl nostro team di assistenza è stato inviato per riportarlo online." 
+    },
+    
+    // unknown http method
+    "501": {
+        "title": "Non implementato",
+        "message": "Il server Web non è in grado di riconoscere il metodo della richiesta."
+    },
+    
+    // webserver - bad gateway
+    "502": {
+        "title": "Web Server attualmente non disponibile - Gateway non valido",
+        "message": "Abbiamo qualche problema con il nostro cluster back-end.\nIl nostro team di assistenza è stato inviato per riportarlo online."
+    },
+    
+    // webserver - service unavailable
+    "503": {
+        "title": "Web Server attualmente non disponibile",
+        "message": "Abbiamo qualche problema con il nostro cluster back-end.\nIl nostro team di assistenza è stato inviato per riportarlo online."
+    },
+
+    // webserver - gateway timeout
+    "504": {
+        "title": "Web Server attualmente non disponibile - Timeout del gateway",
+        "message": "Abbiamo qualche problema con il nostro cluster back-end.\nIl nostro team di assistenza è stato inviato per riportarlo online."
+    },
+    
+    // CUSTOM ERROR CODES
+    // =======================================================
+
+    // webserver origin error
+    "520": {
+        "title": "Errore di origine - Host sconosciuto",
+        "message": "Il nome host richiesto non viene instradato. Utilizzare solo nomi host per accedere alle risorse."
+    },
+    
+    // webserver down error
+    "521": {
+        "title": "Web Server attualmente non disponibile",
+        "message": "Abbiamo qualche problema con il nostro cluster back-end.\nIl nostro team di assistenza è stato inviato per riportarlo online."
+    },
+    
+    // maintenance
+    "533": {
+        "title": "Manutenzione programmata",
+        "message": "Questo sito è attualmente fuori servizio per manutenzione.\nIl nostro team di assistenza sta lavorando sodo per riportarlo presto online."                
+    }
+}
