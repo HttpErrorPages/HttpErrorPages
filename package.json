@@ -1,6 +1,6 @@
 {
     "name": "http-error-pages",
-    "version": "2.0.1",
+    "version": "3.0.0",
     "description": "Simple HTTP Error Pages. standalone + static + koa + express",
     "engines": {
         "node": ">=7.6"
@@ -36,10 +36,10 @@
         "http-error-pages": "./bin/generator.js"
     },
     "main": "./lib/main.js",
-    "author": "Andi Dittrich (https://andidittrich.de)",
-    "homepage": "https://github.com/AndiDittrich/HttpErrorPages",
-    "bugs": "https://github.com/AndiDittrich/HttpErrorPages/issues",
-    "repository": "AndiDittrich/HttpErrorPages",
+    "author": "Andi Dittrich (https://andidittrich.com)",
+    "homepage": "https://github.com/HttpErrorPages/HttpErrorPages",
+    "bugs": "https://github.com/HttpErrorPages/HttpErrorPages/issues",
+    "repository": "HttpErrorPages/HttpErrorPages",
     "license": "MIT",
     "devDependencies": {
         "commander": "^6.2.0",

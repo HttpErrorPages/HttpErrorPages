@@ -153,7 +153,10 @@ async function bootstrap(){
     // because of the asynchronous file-loaders, wait until it has been executed
     await _httpErrorPages.express(_webapp, {
         lang: 'en_US',
-        footer: 'Hello <strong>World</strong>'
+        payload: {
+            footer: 'Hello <strong>World</strong>',
+            myvar: 'hello world'
+        }
     });
 
     // start service
@@ -174,10 +177,13 @@ bootstrap()
 
 Syntax: `Promise _httpErrorPages.express(expressWebapp [, options:Object])`
 
-* `template` - the path to a custom **EJS** template used to generate the pages. default [assets/template.ejs](assets/template.ejs)
-* `css` - the path to a precompiled **CSS** file injected into the page. default [assets/layout.css](assets/layout.css)
-* `footer` - optional page footer content (html allowed). default **null**
-* `lang` - language definition which should be used (available in the `i18n/` directory). default **en_US**
+* `template` (type:string) - the path to a custom **EJS** template used to generate the pages. default [assets/template.ejs](assets/template.ejs)
+* `css` (type:string) - the path to a precompiled **CSS** file injected into the page. default [assets/layout.css](assets/layout.css)
+* `lang` (type:string) - language definition which should be used (available in the `i18n/` directory). default **en_US**
+* `payload` (type:object) - additional variables available within the template
+* `payload.footer` (type:string) - optional page footer content (html allowed). default **null**
+* `filter` (type:function) - filter callback to manipulate the variables before populated within the template
+* `onError` (type:function) - simple debug handler to print errors to the console (not to be used in production!)
 
 ## koajs Integration ##
 
@@ -203,7 +209,11 @@ const _httpErrorPages = require('http-error-pages');
 // because of the asynchronous file-loaders, wait until it has been executed - it returns an async handler
 _webapp.use(await _httpErrorPages.koa({
     lang: 'en_US',
-    footer: 'Hello <strong>World</strong>'
+    payload: {
+        footer: 'Hello <strong>World</strong>',
+        myvar: 'hello world'
+    }
+    
 }));
 
 // add other middleware handlers
@@ -224,10 +234,13 @@ _webapp.listen(8888);
 
 Syntax: `Promise _httpErrorPages.koa([options:Object])`
 
-* `template` - the path to a custom **EJS** template used to generate the pages. default [assets/template.ejs](assets/template.ejs)
-* `css` - the path to a precompiled **CSS** file injected into the page. default [assets/layout.css](assets/layout.css)
-* `footer` - optional page footer content (html allowed). default **null**
-* `lang` - language definition which should be used (available in the `i18n/` directory). default **en_US**
+* `template` (type:string) - the path to a custom **EJS** template used to generate the pages. default [assets/template.ejs](assets/template.ejs)
+* `css` (type:string) - the path to a precompiled **CSS** file injected into the page. default [assets/layout.css](assets/layout.css)
+* `lang` (type:string) - language definition which should be used (available in the `i18n/` directory). default **en_US**
+* `payload` (type:object) - additional variables available within the template
+* `payload.footer` (type:string) - optional page footer content (html allowed). default **null**
+* `filter` (type:function) - filter callback to manipulate the variables before populated within the template
+* `onError` (type:function) - simple debug handler to print errors to the console (not to be used in production!)
 
 ## Caddy Integration ##
 
@@ -390,7 +403,7 @@ The footer message can easily be changed/removed by editing [config.json](config
 ```js
 {
     //  Output Filename Scheme - eg. HTTP500.html
-    "scheme": "HTTP%d.html",
+    "scheme": "HTTP%code%.html",
 
     // Footer content (HTML Allowed)
     "footer": "Contact <a href=\"mailto:info@example.org\">info@example.org</a>"
@@ -402,9 +415,30 @@ The footer message can easily be changed/removed by editing [config.json](config
 ```js
 {
     //  Output Filename Scheme - eg. HTTP500.html
-    "scheme": "HTTP%d.html"
+    "scheme": "HTTP%code%.html"
 }
 ```
+
+### Placeholders/Variables ###
+
+The following set of variables is exposed to the ejs template (404 page example):
+
+```js
+{
+  title: 'Resource not found',
+  message: 'The requested resource could not be found but may be available again in the future.',
+  code: '404',
+  language: 'en',
+  scheme: 'HTTP%code%.html',
+  pagetitle: "We've got some trouble | %code% - %title%",
+  footer: 'Tech Contact <a href="mailto:info@example.org">info@example.org</a>',
+  myvar: 'Hello World'
+}
+```
+
+To generate dynamic titles/content based on the current variable set, each variable is exposed as `placeholder` (surrounded by `%`). 
+
+You can also define custom variable within the page definitions, everything is merged togehter.
 
 ### Modify the HTML template ###
 
@@ -412,13 +446,18 @@ The HTML template is based on [ejs](https://github.com/mde/ejs) and located in [
 
 ```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= vars.language %>">
 <head>
-    <title>HTTP<%= code %> - <%= title %></title>
-</head><body>
-    <h2>Hello World</h2>
-    <div class="cover"><h1><%= title %> <small>Error <%= code %></small></h1><p class="lead"><%= message %></p></div>
-</body></html>
+    <!-- Simple HttpErrorPages | MIT License | https://github.com/HttpErrorPages -->
+    <meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= vars.pagetitle %></title>
+    <style type="text/css"><%- vars.inlinecss %></style>
+</head>
+<body>
+    <div class="cover"><h1><%= vars.title %> <small><%= vars.code %></small></h1><p class="lead"><%= vars.message %></p></div>
+    <% if (vars.footer){ %><footer><p><%- vars.footer %></p></footer><% } %>
+</body>
+</html>
 ```
 
 ### Command line options ###

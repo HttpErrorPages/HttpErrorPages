@@ -10,9 +10,20 @@ async function bootstrap(){
     // because of the asynchronous file-loaders, wait until it has been executed - it returns an async handler
     _webapp.use(await _httpErrorPages.koa({
         lang: 'en_US',
-        footer: 'Hello <strong>World</strong>',
-        error: 'Error %code%',
-        page_title: "We've got some trouble | %code% - %title%",
+        payload: {
+            footer: 'Hello <strong>World</strong>',
+            pagetitle: 'we are sorry - an internal error encountered',
+        },
+        filter: function(data){
+            // remove footer
+            //data.footer = null;
+            return data;
+        },
+        onError: function(data){
+            // for debugging purpose only!!
+            // use custom middleware for errorlogging!!
+            console.log(`[koa] ERROR: ${data.title}\n${data.error.stack}`)
+        }
     }));
 
     // demo handler

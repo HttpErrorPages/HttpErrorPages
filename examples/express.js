@@ -17,6 +17,13 @@ async function bootstrap(){
         next(myError);
     });
 
+    // throw an unknown error
+    _webapp.get('/unknown', function(req, res, next){
+        const myError = new Error();
+        myError.status = 523;
+        next(myError);
+    });
+
     // throw an internal error
     _webapp.get('/500', function(req, res){
         throw new Error('Server Error');
@@ -26,9 +33,20 @@ async function bootstrap(){
     // because of the asynchronous file-loaders, wait until it has been executed
     await _httpErrorPages.express(_webapp, {
         lang: 'en_US',
-        footer: 'Hello <strong>World</strong>',
-        error: 'Error %code%',
-        page_title: "We've got some trouble | %code% - %title%",
+        payload: {
+            footer: 'Hello <strong>World</strong>',
+            pagetitle: 'we are sorry - an internal error encountered',
+        },
+        filter: function(data){
+            // remove footer
+            //data.footer = null;
+            return data;
+        },
+        onError: function(data){
+            // for debugging purpose only!!
+            // use custom middleware for errorlogging!!
+            console.log(`[expressjs] ERROR: ${data.title}\n${data.error.stack}`)
+        }
     });
 
     // start service

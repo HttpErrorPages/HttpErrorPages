@@ -1,6 +1,23 @@
 CHANGELOG
 ======================================================
 
+Branch 3.X.X
+------------------------------------------------------
+
+### 3.0.0 ###
+
+* Refactored the whole codebase
+* Added: template support for `pagetitle` (automatically set if not defined)
+* Added: option to set the pagetitle directly via `payload.pagetitle` (koa+expressjs)
+* Added: filter function to dynamically manipulate the errordata object (koa+expressjs)
+* Added: support for additional variables/payloads
+* Added: support for placeholders to static page generator
+* Added: iso-639-1 `language` attribute (derived from page lang)
+* Added: error/exception object available via `error` (koa+expressjs)
+* Added: `onError` callback as debug error handler (not to be used in production)
+* Changed: moved `footer` content into `payload` object
+* Changed: all variables within the `ejs` template are only accessible via `vars` object
+
 Branch 2.X.X
 ------------------------------------------------------
 

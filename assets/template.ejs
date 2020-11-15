@@ -1,17 +1,13 @@
 <!DOCTYPE html>
-<html lang="<%= lang %>">
+<html lang="<%= vars.language %>">
 <head>
     <!-- Simple HttpErrorPages | MIT License | https://github.com/HttpErrorPages -->
     <meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<% if (locals.page_title) { %>
-    <title><%= page_title %></title>
-<% } else { %>
-    <title>We've got some trouble | <%= code %> - <%= title %></title>
-<% } %>
-    <style type="text/css"><%- inlinecss %></style>
+    <title><%= vars.pagetitle %></title>
+    <style type="text/css"><%- vars.inlinecss %></style>
 </head>
 <body>
-    <div class="cover"><h1><%= title %> <small><%= error %></small></h1><p class="lead"><%= message %></p></div>
-    <% if (footer){ %><footer><p><%- footer %></p></footer><% } %>
+    <div class="cover"><h1><%= vars.title %> <small><%= vars.code %></small></h1><p class="lead"><%= vars.message %></p></div>
+    <% if (vars.footer){ %><footer><p><%- vars.footer %></p></footer><% } %>
 </body>
 </html>

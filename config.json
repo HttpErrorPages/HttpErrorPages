@@ -1,17 +1,13 @@
 {
     // Output Filename Scheme - eg. HTTP500.html
-    // %code% - HTTP error code eg. 400
     "scheme": "HTTP%code%.html",
 
     // Page title (HTML not allowed)
-    // %code% - HTTP error code eg. 400
-    // %title% - HTTP error eg. Bad Request
-    "page_title": "We've got some trouble | %code% - %title%",
-
-    // Error (HTML not allowed)
-    // %code% - HTTP error code eg. 400
-    "error": "Error %code%",
+    "pagetitle": "We've got some trouble | %code% - %title%",
 
     // Footer content (HTML Allowed)
-    "footer": "Tech Contact <a href=\"mailto:info@example.org\">info@example.org</a>"
+    "footer": "Tech Contact <a href=\"mailto:info@example.org\">info@example.org</a>",
+
+    // additional vars
+    "myvar" : "Hello World"
 }
