@@ -124,7 +124,7 @@ yarn add http-error-pages
 
 **Example**
 
-A ready-to-use example can be found in [examples/express.js](exmaples/express.js)
+A ready-to-use example can be found in [examples/express.js](examples/express.js)
 
 ```js
 const _express = require('express');
@@ -197,7 +197,7 @@ yarn add http-error-pages
 
 **Example**
 
-A ready-to-use example can be found in [examples/koa.js](exmaples/koa.js). 
+A ready-to-use example can be found in [examples/koa.js](examples/koa.js). 
 Keep in mind that the following example has to be executed within an async context!
 
 ```js
