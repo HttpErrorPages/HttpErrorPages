@@ -36,14 +36,7 @@ Just clone/download the git repository **or** use the prebuild packages (only th
 
 ## Download Prebuild Packages (Pages only, en_US) ##
 
-**Direct Download**
-* [Download TAR Archive](https://raw.githubusercontent.com/HttpErrorPages/HttpErrorPages/master/dist/pages.tar)
-
-**Shell/Bash**
-```shell
-# TAR Archive
-wget https://raw.githubusercontent.com/HttpErrorPages/HttpErrorPages/master/dist/pages.tar
-```
+* [Download Single Files](https://github.com/HttpErrorPages/HttpErrorPages/tree/master/dist)
 
 ## NGINX Integration ##
 
