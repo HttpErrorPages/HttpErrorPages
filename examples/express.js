@@ -29,6 +29,14 @@ async function bootstrap(){
         throw new Error('Server Error');
     });
 
+    // custom errorhandling middleware
+    // use this pattern in production to log errors!
+    _webapp.use(function(err, req, res, next){
+        console.log(`[custom logging middleware] ${err.message}`);
+        // forward error
+        next(err);
+    });
+
     // use http error pages handler (final statement!)
     // because of the asynchronous file-loaders, wait until it has been executed
     await _httpErrorPages.express(_webapp, {
