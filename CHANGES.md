@@ -4,6 +4,11 @@ CHANGELOG
 Branch 3.X.X
 ------------------------------------------------------
 
+### 3.1.0 ###
+
+* Added: exposed `express.js` response object within `filter()` callback
+
+
 ### 3.0.0 ###
 
 * Refactored the whole codebase

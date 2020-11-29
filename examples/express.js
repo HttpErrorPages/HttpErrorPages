@@ -45,7 +45,7 @@ async function bootstrap(){
             footer: 'Hello <strong>World</strong>',
             pagetitle: 'we are sorry - an internal error encountered',
         },
-        filter: function(data){
+        filter: function(data, req, res){
             // remove footer
             //data.footer = null;
             return data;
