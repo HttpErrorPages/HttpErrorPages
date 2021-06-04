@@ -71,7 +71,6 @@ server {
     # redirect the virtual ErrorPages path the real path
     location /ErrorPages/ {
         alias /var/ErrorPages/;
-        internal;
     }
 ```
 
