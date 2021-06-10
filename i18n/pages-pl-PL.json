@@ -10,7 +10,7 @@
     },
 
     "403": {
-        "title": "brak dostępu",
+        "title": "Brak dostępu",
         "message": "Żądany zasób wymaga uwierzytelnienia."
     },
 
