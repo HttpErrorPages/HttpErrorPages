@@ -1,0 +1,81 @@
+{
+
+    "400": {
+        "title": "Błędne zapytanie",
+        "message": "Serwer nie mógł przetworzyć żądania."
+    },
+    "401": {
+        "title": "Brak uwierzytelnienia",
+        "message": "Żądany zasób wymaga uwierzytelnienia."
+    },
+
+    "403": {
+        "title": "Brak dostępu",
+        "message": "Żądany zasób wymaga uwierzytelnienia."
+    },
+
+    "404": {
+        "title": "Nie znaleziono",
+        "message": "Nie można znaleźć żądanego zasobu, ale może on być ponownie dostępny w przyszłości."
+    },
+
+    "405": {
+        "title": "Nie dozwolona metoda",
+        "message": "Witryna nie bługuje wybranej metody."
+    },
+
+    "408": {
+        "title": "Upłynął limit czasu żadania",
+        "message": "Witryna przekroczyła limit czasu oczekiwania na żądanie przeglądarki."
+    },
+
+    "410": {
+        "title": "Nie znaleziono",
+        "message": "Nie można znaleźć żądanego zasobu, ale był on kiedyś dostępny."
+    },
+
+    "429": {
+        "title": "Za dużo zapytań",
+        "message": "Wysłano zbyt wiele zapytań w zbyt krótkim czasie."
+    },
+
+    "499": {
+        "title": "Żądanie zamknięcia",
+        "message": "Przeglądarka wsyłała żądanie przerwania"
+    },
+
+    "500": {
+        "title": "Witryna jest aktualnie niedostępna",
+        "message": "Wystąpił nieoczekiwany błąd.\nJuż pracujemy nad przywróceniem witryny."
+    },
+
+    "501": {
+        "title": "Brak obsługi",
+        "message": "Witryna nie jest w stanie obsłużyć takiego zapytania."
+    },
+
+    "502": {
+        "title": "Witryna jest aktualnie niedostępna",
+        "message": "Wystąpił nieoczekiwany błąd.\nJuż pracujemy nad przywróceniem witryny."
+    },
+
+    "503": {
+        "title": "Witryna jest aktualnie niedostępna",
+        "message": "Wystąpił nieoczekiwany błąd.\nJuż pracujemy nad przywróceniem witryny."
+    },
+
+    "520": {
+        "title": "Błąd — nieznany host",
+        "message": "Żądana nazwa hosta nie jest routowana. Używaj tylko nazw hostów, aby uzyskać dostęp do zasobów."
+    },
+
+    "521": {
+        "title": "Witryna jest aktualnie niedostępna",
+        "message": "Wystąpił nieoczekiwany błąd.\nJuż pracujemy nad przywróceniem witryny."
+    },
+
+    "533": {
+        "title": "Zaplanowana konserwacja",
+        "message": "Witryna jest obecnie niedostępna z powodu konserwacji.\nPracujemy na tym, aby wkrótce przywrócić ją do trybu online."
+    }
+}
