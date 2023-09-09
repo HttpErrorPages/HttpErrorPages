@@ -44,6 +44,12 @@
         "message": "Nós tivemos alguns problema com o nosso backend. Nosso time de serviços está trabalhando para deixar isso online novamente."
     },
 
+    // http proxy timeout error
+    "504": {
+        "title": "Webservice atualmente indisponível",
+        "message": "Nós tivemos alguns problema com o nosso backend. Nosso time de serviços está trabalhando para deixar isso online novamente."
+    },
+
     // CUSTOM ERROR CODES
     // =======================================================
     // webserver origin error

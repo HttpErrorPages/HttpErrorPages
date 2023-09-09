@@ -45,6 +45,12 @@
         "title": "Webservice currently unavailable",
         "message": "We've got some trouble with our backend upstream cluster.\nOur service team has been dispatched to bring it back online."
     },
+
+    // http proxy time out error
+    "504": {
+        "title": "Webservice currently unavailable",
+        "message": "We've got some trouble with our backend upstream cluster.\nOur service team has been dispatched to bring it back online."
+    },
     
     // CUSTOM ERROR CODES
     // =======================================================
