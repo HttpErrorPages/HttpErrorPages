@@ -51,6 +51,12 @@
         "message": "Se encontró una condición inesperada. Nuestro equipo de servicio está abocado para colocarlo nuevamente en servicio."
     },
 
+    // http 504 Gateway Timeout
+    "504": {
+        "title": "Servicio web proxy actualmente no disponible",
+        "message": "Tenemos algunos problemas con nuestro racimo. Nuestro equipo de servicio fue enviado para restablecerlo nuevamente en línea."
+    },
+
     //https://tools.ietf.org/html/rfc6585#section-6
     // http 511 Network Authentication Required (offer a URL for login)
     

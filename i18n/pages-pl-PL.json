@@ -64,6 +64,11 @@
         "message": "Wystąpił nieoczekiwany błąd.\nJuż pracujemy nad przywróceniem witryny."
     },
 
+    "504": {
+        "title": "Witryna jest aktualnie niedostępna",
+        "message": "Wystąpił nieoczekiwany błąd.\nJuż pracujemy nad przywróceniem witryny."
+    },
+
     "520": {
         "title": "Błąd — nieznany host",
         "message": "Żądana nazwa hosta nie jest routowana. Używaj tylko nazw hostów, aby uzyskać dostęp do zasobów."

@@ -45,6 +45,12 @@
         "title": "Webservice目前不可用",
         "message": "我们的后端上游服务器出现了问题。\n技术支持团队正在努力修复中。"
     },
+
+    // http proxy timeout error
+    "504": {
+        "title": "Webservice目前不可用",
+        "message": "我们的后端上游服务器出现了问题。\n技术支持团队正在努力修复中。"
+    },
     
     // CUSTOM ERROR CODES
     // =======================================================

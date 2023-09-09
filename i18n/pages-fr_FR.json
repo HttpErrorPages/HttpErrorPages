@@ -45,6 +45,12 @@
         "title": "Service Web actuellement indisponible",
         "message": "Nous avons quelques problèmes avec notre cluster en amont. Notre équipe de service a été dépêchée pour le remettre en ligne."
     },
+
+    // http proxy timeout error
+    "504": {
+        "title": "Service Web actuellement indisponible",
+        "message": "Nous avons quelques problèmes avec notre cluster en amont. Notre équipe de service a été dépêchée pour le remettre en ligne."
+    },
     
     // CUSTOM ERROR CODES
     // =======================================================
