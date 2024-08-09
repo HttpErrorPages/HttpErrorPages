@@ -1,6 +1,7 @@
 {
     // Output Filename Scheme - eg. HTTP500.html
     "scheme": "HTTP%code%.html",
+    "baseScheme": "HTTP%code%",
 
     // Page title (HTML not allowed)
     "pagetitle": "We've got some trouble | %code% - %title%",
