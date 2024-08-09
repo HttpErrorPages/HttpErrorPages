@@ -1,4 +1,31 @@
-{        
+{
+    // REDIRECT CODES
+    // =======================================================
+
+    "301": {
+        "title": "Moved Permanently",
+        "message": "We found it elsewhere."
+    },
+    "302": {
+        "title": "Found",
+        "message": "We found it elsewhere."
+    },
+
+    "303": {
+        "title": "See Other",
+        "message": "We found it elsewhere."
+    },
+
+    "307": {
+        "title": "Temporary Redirect",
+        "message": "We found it elsewhere."
+    },
+
+    "308": {
+        "title": "Permanent Redirect",
+        "message": "We found it elsewhere."
+    },
+
     // STANDARD ERROR CODES
     // =======================================================
 
@@ -21,7 +48,12 @@
         "title": "Resource not found",
         "message": "The requested resource could not be found but may be available again in the future." 
     },
-    
+
+    "405": {
+        "title": "Method Not Allowed",
+        "message": "A request method is not supported for the requested resource."
+    },
+
     // internal server error
     "500": {
         "title": "Webservice currently unavailable",
