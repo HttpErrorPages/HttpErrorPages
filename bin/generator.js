@@ -67,8 +67,17 @@ async function generator(configFilename, distPath, opt){
 
         // write content to file
         await _fs.writeFile(_path.join(distPath, templateVars.scheme), content, 'utf8');
-
         console.log(` |- Page <${templateVars.scheme}>`);
+
+        const jsonContent = {
+            "status": Number(templateVars.code),
+            "title": templateVars.title,
+            "detail": templateVars.message
+        }
+
+        await _fs.writeFile(_path.join(distPath, templateVars.baseScheme) + '.json', JSON.stringify(jsonContent, null, 4), 'utf8');
+        console.log(` |- Page <${templateVars.baseScheme}.json>`);
+
     }));
 }
 
