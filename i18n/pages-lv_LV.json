@@ -1,0 +1,91 @@
+{
+    "301": {
+        "title": "Pārvietots uz Visiem Laikiem",
+        "message": "Mēs to atradām citur."
+    },
+
+    "302": {
+        "title": "Atrasts",
+        "message": "Mēs to atradām citur."
+    },
+
+    "303": {
+        "title": "Skatiet Citu",
+        "message": "Mēs to atradām citur."
+    },
+
+    "307": {
+        "title": "Pagaidu Novirzīšana",
+        "message": "Mēs to atradām citur."
+    },
+
+    "308": {
+        "title": "Pastāvīga Novirzīšana",
+        "message": "Mēs to atradām citur."
+    },
+
+    "400": {
+        "title": "Slikts Pieprasījums",
+        "message": "Serveris nevar apstrādāt pieprasījumu, jo tiek uzskatīts, ka tā ir klienta kļūda."
+    },
+
+    "401": {
+        "title": "Nesankcionēts",
+        "message": "Pieprasītajam resursam ir nepieciešama autentifikācija."
+    },
+
+    "403": {
+        "title": "Piekļuve Liegta",
+        "message": "Pieprasītajam resursam ir nepieciešama autentifikācija."
+    },
+
+    "404": {
+        "title": "Resurss nav atrasts",
+        "message": "Pieprasīto resursu nevarēja atrast, taču nākotnē tas var atkal būt pieejams."
+    },
+
+    "405": {
+        "title": "Metode Nav Atļauta",
+        "message": "Pieprasījuma metode pieprasītajam resursam netiek atbalstīta."
+    },
+
+    "500": {
+        "title": "Tīmekļa pakalpojums šobrīd nav pieejams",
+        "message": "Tika konstatēts negaidīts stāvoklis.\nMūsu servisa komanda ir nosūtīta, lai to atjaunotu tiešsaistē."
+    },
+
+    "501": {
+        "title": "Nav Ieviests",
+        "message": "Tīmekļa serveris nevar atpazīt pieprasījuma metodi."
+    },
+
+    "502": {
+        "title": "Tīmekļa pakalpojums šobrīd nav pieejams",
+        "message": "Mums ir radušās problēmas ar mūsu aizmugursistēmas augšupvērsto serveru kopu.\nMūsu servisa komanda ir nosūtīta, lai to atjaunotu tiešsaistē."
+    },
+
+    "503": {
+        "title": "Tīmekļa pakalpojums šobrīd nav pieejams",
+        "message": "Mums ir radušās problēmas ar mūsu aizmugursistēmas augšupvērsto serveru kopu.\nMūsu servisa komanda ir nosūtīta, lai to atjaunotu tiešsaistē."
+    },
+
+    "504": {
+        "title": "Tīmekļa pakalpojums šobrīd nav pieejams",
+        "message": "Mums ir radušās problēmas ar mūsu aizmugursistēmas augšupvērsto serveru kopu.\nMūsu servisa komanda ir nosūtīta, lai to atjaunotu tiešsaistē."
+    },
+
+    "520": {
+        "title": "Izcelsmes kļūda — Nezināms Resursdators",
+        "message": "Pieprasītais resursdatora nosaukums netiek maršrutēts. Lai piekļūtu resursiem, izmantojiet tikai resursdatora nosaukumus."
+    },
+
+    "521": {
+        "title": "Tīmekļa pakalpojums šobrīd nav pieejams",
+        "message": "Mums ir radušās problēmas ar mūsu aizmugursistēmas augšupvērsto serveru kopu.\nMūsu servisa komanda ir nosūtīta, lai to atjaunotu tiešsaistē."
+    },
+
+    "533": {
+        "title": "Plānotā Apkope",
+        "message": "Šī vietne pašlaik nedarbojas apkopes dēļ.\nMūsu servisa komanda cītīgi strādā, lai to drīzumā atgrieztu tiešsaistē."
+    }
+}
